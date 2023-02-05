@@ -19,7 +19,7 @@ tags:
 
 ![Correo falso destacando que el remitente es paquito45@gmail.com](https://raw.githubusercontent.com/asielorz/blog/master/images/correo-falso-remitente-destacado.png)
 
-<p style='text-align: justify;'>Vaya, vaya. ¡Pero si es paquito45@gmail.com! Debe de ser el becario nueve de ING. O a lo mejor es un estafador. No sé vosotros, pero yo no confío en paquito45@gmail.com para que me lleve mis gestiones bancarias. Algo me huele mal aquí. Todo apunta a que alguien está enviando correos haciéndose pasar por ING desde una cuenta que claramente no es de ING, por si acaso algún incauto pica y termina haciendo clic en el enlace para intentar cancelar la transferencia y termina entregando sus datos bancarios a una página falsa.</p>
+<p style='text-align: justify;'>Vaya, vaya. ¡Pero si es paquito45@gmail.com! Debe de ser el becario nuevo de ING. O a lo mejor es un estafador. No sé vosotros, pero yo no confío en paquito45@gmail.com para que me lleve mis gestiones bancarias. Algo me huele mal aquí. Todo apunta a que alguien está enviando correos haciéndose pasar por ING desde una cuenta que claramente no es de ING, por si acaso algún incauto pica y termina haciendo clic en el enlace para intentar cancelar la transferencia y termina entregando sus datos bancarios a una página falsa.</p>
 
 # Capítulo 2: Phishing
 
@@ -27,7 +27,7 @@ tags:
 
 ![Página de inicio de sesión de ING falsa](https://raw.githubusercontent.com/asielorz/blog/master/images/inicio-sesion-ing-falso.png)
 
-<p style='text-align: justify;'>Se parece mucho a la página de inicio de sesión verdadera de ING, ¿no? Cómo que la he copiado, vamos. Mirando a la página es imposible distinguirla de la verdadera y darnos cuenta de que es de mentira. De nuevo, no podemos confiar en el programa en sí, porque no se puede. Tenemos que ver si confiamos en la persona que nos ha enviado el programa. La página de inicio de sesión de ING es <a href="https://ing.ingdirect.es/app-login/">https://ing.ingdirect.es/app-login/</a>. Puede que el enlace exacto cambie en el futuro, pero sería de esperar que siempre terminara en algo como ing.es, ing.com, ingdirect.es… Algo así. Veamos qué tenemos aquí:</p>
+<p style='text-align: justify;'>Se parece mucho a la página de inicio de sesión verdadera de ING, ¿no? Como que la he copiado, vamos. Mirando a la página es imposible distinguirla de la verdadera y darnos cuenta de que es de mentira. De nuevo, no podemos confiar en el programa en sí, porque no se puede. Tenemos que ver si confiamos en la persona que nos ha enviado el programa. La página de inicio de sesión de ING es <a href="https://ing.ingdirect.es/app-login/">https://ing.ingdirect.es/app-login/</a>. Puede que el enlace exacto cambie en el futuro, pero sería de esperar que siempre terminara en algo como ing.es, ing.com, ingdirect.es… Algo así. Veamos qué tenemos aquí:</p>
 
 ![Página de inicio de sesión de ING falsa, destacando que la url es paquito45.com](https://raw.githubusercontent.com/asielorz/blog/master/images/inicio-sesion-ing-falso-url-destacada.png)
 
