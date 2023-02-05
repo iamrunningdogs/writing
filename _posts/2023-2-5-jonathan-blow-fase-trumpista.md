@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Jonathan Blow en su fase trumpista'
-date: 2022-2-5
+date: 2023-2-5
 tags:
   informática
   política
