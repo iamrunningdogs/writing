@@ -4,6 +4,7 @@ title: 'Reusar código es difícil'
 date: 2023-2-13
 tags:
   informática
+  programación
 ---
 <p style='text-align: justify;'>Se habla mucho sobre reusar código, escribir código reusable, no reinventar la rueda, ser eficiente… Depende de a quién se escuche parece que reusar código es un objetivo a buscar siempre. Todo el código debería ser escrito para poder ser reusado en el futuro, y todo código nuevo debería buscar reusar soluciones anteriores antes que reescribir soluciones parecidas de cero. Por un lado, es cierto que reusar código es útil y hecho correctamente puede ayudar a un equipo a ahorrar tiempo y esfuerzo a largo plazo. Por otro lado, contra lo que podríamos intuir, reusar código no es gratis. Se suele pensar en el código escrito en el pasado como algo que “ya está hecho”, y se suele ignorar el trabajo necesario para adaptarlo al contexto y los problemas actuales. Tener en cuenta este coste nos puede llevar a tomar mejores decisiones respecto a cuándo se debería reusar código y cuándo tiene más sentido escribir una solución nueva.</p>
 

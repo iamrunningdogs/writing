@@ -4,6 +4,7 @@ title: 'Un argumento a favor de nombrar sistemas internos'
 date: 2023-2-13
 tags:
   informática
+  programación
 ---
 <p style='text-align: justify;'>Una práctica algo común en algunos proyectos de software es el nombrar con nombres propios sistemas internos, que no son parte de la interfaz pública y sólo son visibles para el equipo. Recuerdo que esta práctica me frustraba mucho cuando entré a mi primer trabajo, porque hacía que saber qué era cada cosa fuera mucho más difícil. Me pasaba el día preguntándome por qué alguien en su sano juicio llamaría a su sistema <a href="https://www.youtube.com/watch?v=y8OnoxKotPQ">Galactus</a> en vez de “agregador de proveedores de información”. Y la verdad es que hasta ahora no había encontrado ningún argumento de peso a favor de esta práctica, a la que desde luego le veo muchos en contra. Pero desde hoy, por fin, tengo al menos un argumento a favor de nombrar sistemas internos. Puede facilitar algunas tomas de decisiones a la hora de reutilizar código a largo plazo.</p>
 
