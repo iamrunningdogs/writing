@@ -6,7 +6,7 @@ tags:
   programación
   informática
 ---
-<p style='text-align: justify;'>Hemos hablado en el pasado de que <a href="https://asielorz.github.io/malloc-es-especial/">malloc es especial</a> y de que <a href="https://asielorz.github.io/concurrencia-estructurada-especial/">la concurrencia estructurada también es especial</a>. Hoy vamos a ver cómo lidian los lenguajes de programación funcionales con esta limitación y explorar el espacio de diseño para buscar alternativas.</p>
+<p style='text-align: justify;'>Hemos hablado en el pasado de que <a href="https://asielorz.github.io/malloc-es-especial/">malloc es especial</a> y de que <a href="https://asielorz.github.io/concurrencia-estructurada-especial/">la concurrencia estructurada también es especial</a>. Hoy vamos a ver cómo lidian los lenguajes de programación funcionales con las funciones puras que necesitan efectos secundarios como parte de su implementación, y a explorar el espacio de diseño para buscar alternativas.</p>
 
 # Memoria
 
