@@ -35,7 +35,9 @@ tags:
 
 <p style='text-align: justify;'>Dado lo grandes que son los discos duros y la memoria RAM hoy en día, y que para la mayoría de usos de los que vamos a hablar no necesitamos grabaciones tan largas y que incluso una hora es muchísimo, estos números están totalmente dentro de lo que nos podemos permitir.</p>
 
-<p style='text-align: justify;'>Por supuesto, a esto hay que añadirle también un encabezado con la información para poder construir la partida, pero sólo necesitamos uno de esos, así que, aunque sea tirando a grande, nos da bastante igual. Unos pocos kilobytes de información en parámetros para construir una partida es una barbaridad de complejidad y de sobra para la mayoría de juegos, mientras que en el disco duro ese tamaño es aproximadamente equivalente a 0.</p>
+<p style='text-align: justify;'>Por hacer la comparación, si estuviéramos guardando la grabación en vídeo, una hora de vídeo a 720p y un bitrate no demasiado bueno va a ocupar cerca de medio gigabyte. Si lo quisiéramos a 1080p o con bitrate más alto, nos vamos a por encima del giga o incluso de varios gigas por hora. Si preparamos nuestro juego para poder ser reproducido, el tamaño de esas reproducciones es regalado comparado con el vídeo.</p>
+
+<p style='text-align: justify;'>Por supuesto, a lo calculado hay que añadirle también un encabezado con la información para poder construir la partida, pero sólo necesitamos uno de esos, así que, aunque sea tirando a grande, nos da bastante igual. Unos pocos kilobytes de información en parámetros para construir una partida es una barbaridad de complejidad y de sobra para la mayoría de juegos, mientras que en el disco duro ese tamaño es aproximadamente equivalente a 0.</p>
 
 <p style='text-align: justify;'>Ahora, hablemos sobre qué podemos hacer con esto.</p>
 
