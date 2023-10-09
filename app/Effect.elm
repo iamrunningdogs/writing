@@ -19,8 +19,6 @@ type Effect msg
     = None
     | Cmd (Cmd msg)
     | Batch (List (Effect msg))
-    | GetStargazers (Result Http.Error Int -> msg)
-    | SetField { formId : String, name : String, value : String }
     | FetchRouteData
         { data : Maybe FormData
         , toMsg : Result Http.Error Url -> msg
@@ -70,9 +68,6 @@ map fn effect =
         Batch list ->
             Batch (List.map (map fn) list)
 
-        GetStargazers toMsg ->
-            GetStargazers (toMsg >> fn)
-
         FetchRouteData fetchInfo ->
             FetchRouteData
                 { data = fetchInfo.data
@@ -84,9 +79,6 @@ map fn effect =
                 { values = fetchInfo.values
                 , toMsg = fetchInfo.toMsg >> fn
                 }
-
-        SetField info ->
-            SetField info
 
         SubmitFetcher fetcher ->
             fetcher
@@ -123,18 +115,8 @@ perform ({ fromPageMsg, key } as helpers) effect =
         Cmd cmd ->
             Cmd.map fromPageMsg cmd
 
-        SetField info ->
-            helpers.setField info
-
         Batch list ->
             Cmd.batch (List.map (perform helpers) list)
-
-        GetStargazers toMsg ->
-            Http.get
-                { url =
-                    "https://api.github.com/repos/dillonkearns/elm-pages"
-                , expect = Http.expectJson (toMsg >> fromPageMsg) (Decode.field "stargazers_count" Decode.int)
-                }
 
         FetchRouteData fetchInfo ->
             helpers.fetchRouteData
