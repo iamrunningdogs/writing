@@ -1,8 +1,7 @@
 name: build-page
 run-name: ${{ github.actor }} is building the static page from the code and posts
 
-on: [push]
-
+on: [push, workflow_dispatch]
 
 permissions:
   contents: read
