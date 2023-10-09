@@ -158,13 +158,9 @@ header window_width =
                 , Widgets.link [] { url = "/", label = UI.text "Asier Elorz" }
                 ]
 
-        links =
-            UI.wrappedRow
-                [ if compact then
-                    UI.centerX
-
-                  else
-                    UI.alignRight
+        links_row =
+            UI.row
+                [ UI.alignRight
                 , UI.spacing 26
                 , UI.centerY
                 ]
@@ -172,6 +168,18 @@ header window_width =
                 , Widgets.link [] { url = "/archive", label = UI.text "Todos" }
                 , Widgets.link [] { url = "/tags", label = UI.text "Etiquetas" }
                 , Widgets.link [] { url = "/about", label = UI.text "Sobre mí" }
+                ]
+
+        links_2x2 =
+            UI.column [ UI.centerX, UI.centerY, UI.spacing 26 ]
+                [ UI.row [ UI.spacing 26 ]
+                    [ Widgets.link [] { url = "/", label = UI.text "Recientes" }
+                    , Widgets.link [] { url = "/archive", label = UI.text "Todos" }
+                    ]
+                , UI.row [ UI.spacing 26 ]
+                    [ Widgets.link [] { url = "/tags", label = UI.text "Etiquetas" }
+                    , Widgets.link [] { url = "/about", label = UI.text "Sobre mí" }
+                    ]
                 ]
     in
     UI.column
@@ -185,7 +193,7 @@ header window_width =
                 , UI.spacing 20
                 ]
                 [ site_identifier
-                , links
+                , links_2x2
                 ]
 
           else
@@ -194,7 +202,7 @@ header window_width =
                 , UI.paddingXY 0 20
                 ]
                 [ site_identifier
-                , links
+                , links_row
                 ]
         , Widgets.horizontalSeparator 1
         ]
