@@ -171,14 +171,14 @@ header window_width =
                 ]
 
         links_2x2 =
-            UI.column [ UI.centerX, UI.centerY, UI.spacing 26 ]
-                [ UI.row [ UI.spacing 26 ]
-                    [ Widgets.link [] { url = "/", label = UI.text "Recientes" }
-                    , Widgets.link [] { url = "/archive", label = UI.text "Todos" }
+            UI.row [ UI.centerX, UI.centerY, UI.spacing 26 ]
+                [ UI.column [ UI.spacing 10 ]
+                    [ Widgets.link [ UI.centerX ] { url = "/", label = UI.text "Recientes" }
+                    , Widgets.link [ UI.centerX ] { url = "/tags", label = UI.text "Etiquetas" }
                     ]
-                , UI.row [ UI.spacing 26 ]
-                    [ Widgets.link [] { url = "/tags", label = UI.text "Etiquetas" }
-                    , Widgets.link [] { url = "/about", label = UI.text "Sobre mí" }
+                , UI.column [ UI.spacing 10 ]
+                    [ Widgets.link [ UI.centerX ] { url = "/archive", label = UI.text "Todos" }
+                    , Widgets.link [ UI.centerX ] { url = "/about", label = UI.text "Sobre mí" }
                     ]
                 ]
     in
