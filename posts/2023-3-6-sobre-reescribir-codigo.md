@@ -1,0 +1,19 @@
+---
+layout: post
+title: Sobre reescribir código
+date: 2023-3-6
+tags:
+  informática
+  programación
+---
+Leyendo hace poco [un artículo](https://blog.axo.dev/2023/02/cargo-dist-rewrite) de Aria Beingessner “Gankra” sobre el desarrollo de la herramienta cargo-dist, me choca cómo explica que de la versión 0.0.2 a la 0.0.3 ha reescrito todo el código de cero. Y me choca, por supuesto, porque no solemos hacer eso. Solemos desarrollar programas de forma iterativa, modificando poco a poco lo anterior para añadir nuevas cosas y corregir errores. Este tipo de gran reescritura suele ser muy raro y terminal mal. Por eso, es curioso ver una historia de éxito, y podría ser valioso analizarla.
+
+Para empezar, cargo-dist es una nueva herramienta para automatizar el generar binarios finales, los que la gente va a ejecutar en sus casas, para distintas plataformas desde un servidor de integración continua. Es un proyecto de una sola persona y su desarrollo es reciente, así que es bastante pequeño. Cargo-dist es también un proyecto nuevo, que lidia con problemas complejos y mucha interacción con código de terceros. Con compiladores, con linkers, con distintos sistemas operativos y arquitecturas de procesador, con el control de versiones, con sistemas de configuración, con la máquina de integración continua… Una gran parte de su desarrollo es de hecho la investigación del espacio del problema, y el diseño de una herramienta para facilitar lidiar con esta complejidad.
+
+No muchos proyectos se parecen a cargo-dist. Pero sí que muchas tareas individuales en el desarrollo de un proyecto se parecen a cargo-dist. A menudo, suele ser una sola persona la encargada de escribir y mantener un sistema o una parte de un programa. Estas partes suelen ser pequeñas. Semanas de trabajo de una persona, no años de un equipo. Muchos pensaréis, aun así, ¿por qué rehacer semanas de trabajo para hacer un cambio en lugar de modificar lo que ya hay? Y, efectivamente, suena a bastante mala idea. Pero, ¿son realmente semanas de trabajo lo que hay que rehacer?
+
+Es bastante ingenuo pensar que, si a una persona le ha llevado dos semanas escribir un programa, le llevaría dos semanas volver a escribir el mismo programa, o un programa que solucione el mismo problema, aunque lo haga de una forma distinta. Ahora ya se sabe la respuesta. Hay que descontar todo el trabajo de investigación y diseño. Todo el tiempo invertido aprendiendo sobre el problema y cómo expresarlo en código y en una interfaz. En realidad, el tiempo de tecleo es una parte relativamente pequeña del tiempo que lleva escribir un programa.
+
+Pensemos ahora en las ventajas. A menudo, la primera versión de algo suele ser peor de lo que podría. Esto se debe a que se ha escrito sin todo el conocimiento necesario, y añadiendo parches conforme uno se iba topando con los problemas. Reescribir permite volver a idear la base a toro pasado, con la perspectiva de conocer el problema y todas las limitaciones en profundidad, y sin repetir los mismos errores. Hay potencial para que el resultado de la reescritura tenga una estructura más simple, coherente y que represente mejor el problema que resuelve. En consecuencia, será más fácil de expandir y arreglar en el futuro. Es un típico caso en el que más trabajo ahora significa menos trabajo luego.
+
+Por supuesto, no siempre interesa hacer esto. De hecho, la mayoría de las veces el diseño inicial está lo bastante bien como para que no haga falta, o puede ser modificado poco a poco hasta un estado en el que esté lo bastante bien. Otras veces, la versión 1 tiene ya demasiadas dependencias como para ser modificada sin comprometer otras partes del programa, así que rehacerla sin un coste excesivo es un barco que ya ha zarpado. Sin embargo, a veces, pocas veces, es una buena idea. Y creo que a menudo ni siquiera pensamos en ella. Tener el conocimiento de que podemos reescribir algo si tiene sentido es una herramienta valiosa de vez en cuando.
