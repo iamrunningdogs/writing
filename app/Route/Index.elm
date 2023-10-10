@@ -2,11 +2,15 @@ module Route.Index exposing (ActionData, Data, Model, Msg, route)
 
 import BackendTask exposing (BackendTask)
 import DateTime
-import Element as UI exposing (px)
+import Element as UI exposing (px, rgba255)
+import Element.Background as UI_Background
+import Element.Border as UI_Border
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Head
 import Head.Seo as Seo
+import Html.Attributes
+import Markdown.Block exposing (HtmlAttribute)
 import PagesMsg exposing (PagesMsg)
 import Posts
 import PostsMarkdown
@@ -60,7 +64,7 @@ data =
 head :
     App Data ActionData RouteParams
     -> List Head.Tag
-head app =
+head _ =
     Seo.website SeoConfig.defaultSeo
 
 
@@ -86,17 +90,44 @@ view app shared =
 
 viewPost : Posts.Post -> UI.Element msg
 viewPost post =
+    let
+        image_widget =
+            case post.header.image of
+                Nothing ->
+                    []
+
+                Just image_url ->
+                    [ UI.el
+                        [ UI.width UI.fill
+                        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "1920 / 540"
+                        , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+                        , UI_Background.image image_url
+                        , UI_Border.rounded 10
+
+                        --, UI.inFront <|
+                        --    UI.el
+                        --        [ UI.width UI.fill
+                        --        , UI.height UI.fill
+                        --        , UI_Background.gradient { angle = pi, steps = [ rgba255 24 26 27 0, rgba255 24 26 27 1 ] }
+                        --        , UI_Border.rounded 10
+                        --        ]
+                        --        UI.none
+                        ]
+                        UI.none
+                    ]
+    in
     UI.column
         [ UI.width UI.fill
         , UI.spacing 10
         ]
-        [ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ UI.text post.header.title ] }
-        , UI.wrappedRow [ UI.spacing 5 ] (Widgets.dateText "" post.header.date :: List.map Widgets.tag post.header.tags)
-        , UI.el [ UI.height (px 5) ] UI.none -- Dummy element to add spacing between the header and the text
-
-        -- Not completely correct. It is not supporting custom descriptions. It also does a lot of extra work, but only at build time.
-        , PostsMarkdown.parseBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
-        , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
-        , Widgets.horizontalSeparator 1
-        , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
-        ]
+        ([ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ UI.text post.header.title ] }
+         , UI.wrappedRow [ UI.spacing 5 ] (Widgets.dateText "" post.header.date :: List.map Widgets.tag post.header.tags)
+         , UI.el [ UI.height (px 5) ] UI.none -- Dummy element to add spacing between the header and the text
+         ]
+            ++ image_widget
+            ++ [ PostsMarkdown.parseBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
+               , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
+               , Widgets.horizontalSeparator 1
+               , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
+               ]
+        )
