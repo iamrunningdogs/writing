@@ -56,9 +56,8 @@ data =
 head :
     App Data ActionData RouteParams
     -> List Head.Tag
-head app =
-    { defaultSeo | title = "Sobre mí — Asier Elorz" }
-        |> Seo.website
+head _ =
+    SeoConfig.makeHeadTags { defaultSeo | title = "Sobre mí — Asier Elorz" }
 
 
 view :

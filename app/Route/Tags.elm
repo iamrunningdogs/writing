@@ -72,7 +72,7 @@ head :
     App Data ActionData RouteParams
     -> List Head.Tag
 head _ =
-    Seo.website { defaultSeo | title = title }
+    SeoConfig.makeHeadTags { defaultSeo | title = title }
 
 
 init : App Data ActionData RouteParams -> Shared.Model -> ( Model, Effect.Effect Msg )

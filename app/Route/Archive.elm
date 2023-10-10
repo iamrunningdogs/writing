@@ -71,8 +71,8 @@ title =
 head :
     App Data ActionData RouteParams
     -> List Head.Tag
-head app =
-    Seo.website { defaultSeo | title = title }
+head _ =
+    SeoConfig.makeHeadTags { defaultSeo | title = title }
 
 
 init : App Data ActionData RouteParams -> Shared.Model -> ( Model, Effect.Effect Msg )

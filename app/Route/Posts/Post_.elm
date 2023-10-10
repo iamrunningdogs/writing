@@ -5,7 +5,6 @@ import Element as UI exposing (px)
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Head
-import Head.Seo as Seo
 import PagesMsg exposing (PagesMsg)
 import Posts
 import PostsMarkdown
@@ -71,7 +70,7 @@ head app =
         post =
             app.data
     in
-    Seo.website
+    SeoConfig.makeHeadTags
         { defaultSeo
             | title = post.header.title ++ " — Asier Elorz"
             , description = Posts.description post
