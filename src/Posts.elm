@@ -1,4 +1,4 @@
-module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader)
+module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader, removeDateFromPostFilename)
 
 import BackendTask exposing (BackendTask)
 import BackendTask.File
@@ -7,6 +7,7 @@ import DateTime exposing (Date)
 import Dict
 import FatalError exposing (FatalError)
 import Json.Decode
+import Parser exposing ((|.), (|=))
 
 
 allBlogPosts : BackendTask FatalError (List String)
@@ -47,16 +48,16 @@ description post =
 
 
 loadPost : String -> BackendTask FatalError Post
-loadPost post_name =
-    BackendTask.File.bodyWithFrontmatter (postDecoder <| postUrl post_name) (postPath post_name)
+loadPost post_filename =
+    BackendTask.File.bodyWithFrontmatter (postDecoder <| postUrl post_filename) (postPath post_filename)
         |> BackendTask.allowFatal
 
 
 {-| Load the metadata but not the content
 -}
 loadPostHeader : String -> BackendTask FatalError PostHeader
-loadPostHeader post_name =
-    BackendTask.File.onlyFrontmatter (postHeaderDecoder <| postUrl post_name) (postPath post_name)
+loadPostHeader post_filename =
+    BackendTask.File.onlyFrontmatter (postHeaderDecoder <| postUrl post_filename) (postPath post_filename)
         |> BackendTask.allowFatal
 
 
@@ -76,13 +77,31 @@ postHeaderDecoder url =
 
 
 postPath : String -> String
-postPath post_name =
-    "posts/" ++ post_name ++ ".md"
+postPath post_filename =
+    "posts/" ++ post_filename ++ ".md"
+
+
+removeDateFromPostFilename : String -> String
+removeDateFromPostFilename post_filename =
+    let
+        post_filename_parser =
+            Parser.succeed identity
+                |. Parser.int
+                |. Parser.symbol "-"
+                |. Parser.oneOf [ Parser.symbol "0", Parser.succeed () ]
+                |. Parser.int
+                |. Parser.symbol "-"
+                |. Parser.oneOf [ Parser.symbol "0", Parser.succeed () ]
+                |. Parser.int
+                |. Parser.symbol "-"
+                |= Parser.getChompedString (Parser.chompWhile (always True))
+    in
+    Parser.run post_filename_parser post_filename |> Result.withDefault post_filename
 
 
 postUrl : String -> String
-postUrl post_name =
-    "/posts/" ++ post_name
+postUrl post_filename =
+    "/posts/" ++ removeDateFromPostFilename post_filename
 
 
 tagsDecoder : Json.Decode.Decoder (List String)

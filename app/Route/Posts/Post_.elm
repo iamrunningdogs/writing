@@ -42,6 +42,7 @@ route =
 pages : BackendTask FatalError (List RouteParams)
 pages =
     Posts.allBlogPosts
+        |> BackendTask.map (List.map Posts.removeDateFromPostFilename)
         |> BackendTask.map (List.map RouteParams)
 
 
@@ -57,7 +58,9 @@ data :
     RouteParams
     -> BackendTask FatalError Data
 data routeParams =
-    Posts.loadPost routeParams.post
+    Posts.allBlogPosts
+        |> BackendTask.map (List.partition (String.contains routeParams.post) >> Tuple.first >> List.head >> Maybe.withDefault routeParams.post)
+        |> BackendTask.andThen Posts.loadPost
 
 
 head :
