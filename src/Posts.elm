@@ -1,4 +1,4 @@
-module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader, removeDateFromPostFilename)
+module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader, postUrl, removeDateFromPostFilename)
 
 import BackendTask exposing (BackendTask)
 import BackendTask.File

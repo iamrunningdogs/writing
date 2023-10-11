@@ -3,15 +3,21 @@ module Shared exposing (Data, Model, Msg(..), SharedMsg(..), template)
 import BackendTask exposing (BackendTask)
 import Browser.Dom
 import Browser.Events
+import Browser.Navigation
 import Effect exposing (Effect)
 import Element as UI exposing (px, rgb255)
 import Element.Background as UI_Background
 import Element.Border as UI_Border
+import Element.Events as UI_Events
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Html exposing (Html)
+import LanguageTag.Country exposing (to)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
+import Platform.Cmd as Cmd
+import Posts
+import Random
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
 import Task
@@ -34,10 +40,13 @@ template =
 type Msg
     = SharedMsg SharedMsg
     | Msg_ViewportSize (Maybe { width : Int, height : Int })
+    | Msg_RandomPostClicked (List String)
+    | Msg_RandomPostChosen (Maybe String)
 
 
 type alias Data =
-    ()
+    { all_post_filenames : List String
+    }
 
 
 type SharedMsg
@@ -73,6 +82,16 @@ init flags maybePagePath =
     )
 
 
+random_uniform : List a -> Random.Generator (Maybe a)
+random_uniform l =
+    case l of
+        [] ->
+            Random.constant Nothing
+
+        head :: tail ->
+            Random.uniform head tail |> Random.map Just
+
+
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
@@ -82,6 +101,17 @@ update msg model =
         Msg_ViewportSize new_window ->
             ( { model | window = new_window }, Effect.none )
 
+        Msg_RandomPostClicked all_articles ->
+            ( model, random_uniform all_articles |> Random.generate Msg_RandomPostChosen |> Effect.Cmd )
+
+        Msg_RandomPostChosen maybe_post_filename ->
+            case maybe_post_filename of
+                Nothing ->
+                    ( model, Effect.none )
+
+                Just post_filename ->
+                    ( model, Posts.postUrl post_filename |> Browser.Navigation.load |> Effect.Cmd )
+
 
 subscriptions : UrlPath -> Model -> Sub Msg
 subscriptions _ _ =
@@ -90,7 +120,8 @@ subscriptions _ _ =
 
 data : BackendTask FatalError Data
 data =
-    BackendTask.succeed ()
+    Posts.allBlogPosts
+        |> BackendTask.map Data
 
 
 view :
@@ -122,7 +153,7 @@ view sharedData page model toMsg pageView =
                     , UI.width <| UI.maximum 750 UI.fill
                     , UI.paddingXY 10 0
                     ]
-                    [ header <| Maybe.map .width model.window
+                    [ UI.map toMsg <| header { window_width = Maybe.map .width model.window, all_post_filenames = sharedData.all_post_filenames }
                     , pageView.body
                     ]
                 , footer
@@ -132,8 +163,8 @@ view sharedData page model toMsg pageView =
     }
 
 
-header : Maybe Int -> UI.Element msg
-header window_width =
+header : { window_width : Maybe Int, all_post_filenames : List String } -> UI.Element Msg
+header { window_width, all_post_filenames } =
     let
         compact =
             case window_width of
@@ -141,7 +172,7 @@ header window_width =
                     False
 
                 Just width ->
-                    width < 600
+                    width < 700
 
         site_identifier =
             UI.row
@@ -158,6 +189,17 @@ header window_width =
                 , Widgets.link [] { url = "/", label = UI.text "Asier Elorz" }
                 ]
 
+        random_post_button attributes =
+            UI.el
+                ([ UI.pointer
+                 , UI.mouseOver [ UI_Font.color Widgets.linkBlue ]
+                 , UI_Events.onClick (Msg_RandomPostClicked all_post_filenames)
+                 ]
+                    ++ attributes
+                )
+            <|
+                UI.text "Aleatorio"
+
         links_row =
             UI.row
                 [ UI.alignRight
@@ -166,20 +208,24 @@ header window_width =
                 ]
                 [ Widgets.link [] { url = "/", label = UI.text "Recientes" }
                 , Widgets.link [] { url = "/archive", label = UI.text "Todos" }
+                , random_post_button []
                 , Widgets.link [] { url = "/tags", label = UI.text "Etiquetas" }
                 , Widgets.link [] { url = "/about", label = UI.text "Sobre mí" }
                 ]
 
         links_2x2 =
-            UI.row [ UI.centerX, UI.centerY, UI.spacing 26 ]
-                [ UI.column [ UI.spacing 10 ]
-                    [ Widgets.link [ UI.centerX ] { url = "/", label = UI.text "Recientes" }
-                    , Widgets.link [ UI.centerX ] { url = "/tags", label = UI.text "Etiquetas" }
+            UI.column [ UI.centerX, UI.spacing 10 ]
+                [ UI.row [ UI.centerX, UI.centerY, UI.spacing 26 ]
+                    [ UI.column [ UI.spacing 10 ]
+                        [ Widgets.link [ UI.centerX ] { url = "/", label = UI.text "Recientes" }
+                        , random_post_button [ UI.centerX ]
+                        ]
+                    , UI.column [ UI.spacing 10 ]
+                        [ Widgets.link [ UI.centerX ] { url = "/archive", label = UI.text "Todos" }
+                        , Widgets.link [ UI.centerX ] { url = "/tags", label = UI.text "Etiquetas" }
+                        ]
                     ]
-                , UI.column [ UI.spacing 10 ]
-                    [ Widgets.link [ UI.centerX ] { url = "/archive", label = UI.text "Todos" }
-                    , Widgets.link [ UI.centerX ] { url = "/about", label = UI.text "Sobre mí" }
-                    ]
+                , Widgets.link [ UI.centerX ] { url = "/about", label = UI.text "Sobre mí" }
                 ]
     in
     UI.column
