@@ -190,15 +190,17 @@ referenceFootnote id =
         }
 
 
-postBannerImage : String -> Maybe String -> UI.Element msg
-postBannerImage image_url alt_text =
+postBannerImage : List (UI.Attribute msg) -> String -> Maybe String -> UI.Element msg
+postBannerImage attributes image_url alt_text =
     UI.image
-        [ UI.width UI.fill
-        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "750 / 250"
-        , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
-        , UI_Border.rounded 10
-        , UI.clip
-        ]
+        ([ UI.width UI.fill
+         , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "750 / 250"
+         , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+         , UI_Border.rounded 10
+         , UI.clip
+         ]
+            ++ attributes
+        )
         { src = image_url
         , description = alt_text |> Maybe.withDefault ""
         }

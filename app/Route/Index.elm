@@ -2,7 +2,7 @@ module Route.Index exposing (ActionData, Data, Model, Msg, route)
 
 import BackendTask exposing (BackendTask)
 import DateTime
-import Element as UI exposing (px, rgba255)
+import Element as UI exposing (px, rgb, rgba255)
 import Element.Background as UI_Background
 import Element.Border as UI_Border
 import Element.Font as UI_Font
@@ -99,7 +99,7 @@ viewPost post =
                 Just image_url ->
                     [ UI.link []
                         { url = post.header.url
-                        , label = Widgets.postBannerImage image_url post.header.image_alt
+                        , label = Widgets.postBannerImage [ UI.mouseOver [ UI_Border.glow (rgb 1 1 1) 1.0 ] ] image_url post.header.image_alt
                         }
                     ]
     in

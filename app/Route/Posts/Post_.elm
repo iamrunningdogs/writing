@@ -96,7 +96,7 @@ view app sharedModel =
                     []
 
                 Just image_url ->
-                    [ Widgets.postBannerImage image_url post.header.image_alt ]
+                    [ Widgets.postBannerImage [] image_url post.header.image_alt ]
     in
     { title = post.header.title ++ " — Asier Elorz"
     , body =
