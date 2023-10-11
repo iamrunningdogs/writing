@@ -190,8 +190,8 @@ referenceFootnote id =
         }
 
 
-postBannerImage : String -> UI.Element msg
-postBannerImage image_url =
+postBannerImage : String -> Maybe String -> UI.Element msg
+postBannerImage image_url alt_text =
     UI.image
         [ UI.width UI.fill
         , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "1920 / 540"
@@ -200,5 +200,5 @@ postBannerImage image_url =
         , UI.clip
         ]
         { src = image_url
-        , description = ""
+        , description = alt_text |> Maybe.withDefault ""
         }

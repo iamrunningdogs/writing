@@ -99,7 +99,7 @@ viewPost post =
                 Just image_url ->
                     [ UI.link []
                         { url = post.header.url
-                        , label = Widgets.postBannerImage image_url
+                        , label = Widgets.postBannerImage image_url post.header.image_alt
                         }
                     ]
     in

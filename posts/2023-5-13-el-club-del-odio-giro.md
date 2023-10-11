@@ -2,12 +2,12 @@
 layout: post
 title: El club del odio usa un giro de trama para reforzar su mensaje
 date: 2023-5-13
+image: /images/el-club-del-odio.png
+image-alt: Recorte de un fotograma de la película "El club del odio" en el que se ve una tarta con una esvástica dibujada con mermelada.
 tags:
   cine
 ---
 Este texto destripa un importante giro de trama que sucede a la mitad de *El club del odio* (Beth de Araújo, 2022). De hecho, el objetivo de este texto es alabar cómo la película usa el pillar por sorpresa al espectador para reforzar su mensaje. Por ello, se recomienda encarecidamente ver la película antes de seguir leyendo. Proceda bajo su propio riesgo.
-
-![Cartel de la película El club del odio. Es un pastel en el que hay dibujada una esvástica con los cortes hechos con un cuchillo](/images/el-club-del-odio-cartel.png)
 
 *El club del odio* sigue a un grupo de supremacistas blancas estadounidenses que se reúnen de vez en cuando para comer pasteles y hablar de cosas nazis. El cartel de la película, en el que se ve una tarta con una esvástica nazi dibujada con un cuchillo, resume bastante bien y con mucha ironía el concepto. Durante la primera mitad, yo creía estar viendo una película de cámara, una de estas películas, a menudo adaptadas del teatro, que suceden en una sola habitación y donde la chicha está en los diálogos. Una comedia negra y satírica al estilo de *Un dios salvaje* (Roman Polanski, 2011). Filmar a un grupo de mujeres que se reúnen para charlar sobre los sudamericanos que vienen a robarles el trabajo y los negros que cometen muchos delitos para intentar mostrar cómo opera el discurso racista en personas cualquiera, alejadas del estereotipo de racista paleto del Ku Klux Klan. La película es muy inteligente con esto. Por eso abre con una primera escena en la que vemos a Emily, la cabecilla del grupo y organizadora de la reunión, en su trabajo de profesora y haciendo compañía a un niño que se ha quedado solo en el colegio porque su madre se ha retrasado y no ha venido a recogerlo a tiempo.
 

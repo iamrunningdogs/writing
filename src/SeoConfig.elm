@@ -86,10 +86,10 @@ inferImageMimeType image_url =
         Nothing
 
 
-imageFromUrl : String -> Seo.Image
-imageFromUrl url =
+imageFromUrl : String -> Maybe String -> Seo.Image
+imageFromUrl url alt_text =
     { url = Pages.Url.external url
-    , alt = ""
+    , alt = alt_text |> Maybe.withDefault ""
     , dimensions = Nothing
     , mimeType = inferImageMimeType url |> Maybe.map MimeType.Image
     }

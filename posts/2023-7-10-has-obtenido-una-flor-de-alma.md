@@ -3,6 +3,7 @@ layout: post
 title: Has obtenido una flor de alma
 date: 2023-7-10
 image : /images/spiritfarer.png
+image-alt: Imagen del videojuego Spiritfarer en el que se puede ver a la protagonista, Stella, con su gato en su barca delante de la Puerta Eterna. Las nubes que se ven al otro lado de la puerta tienen la forma de los distintos personajes a los que Stella ayuda a lo largo del juego. El agua alrededor de la Puerta Eterna es roja, igual que en el juego.
 tags:
   videojuego
 ---
