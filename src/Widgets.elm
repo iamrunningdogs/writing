@@ -188,3 +188,17 @@ referenceFootnote id =
         { url = "#ref-" ++ id
         , label = UI.text <| "[" ++ id ++ "]"
         }
+
+
+postBannerImage : String -> UI.Element msg
+postBannerImage image_url =
+    UI.image
+        [ UI.width UI.fill
+        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "1920 / 540"
+        , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+        , UI_Border.rounded 10
+        , UI.clip
+        ]
+        { src = image_url
+        , description = ""
+        }

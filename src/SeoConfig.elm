@@ -52,10 +52,44 @@ makeHeadTags config =
         }
 
 
+last : List a -> Maybe a
+last l =
+    List.drop (List.length l - 1) l |> List.head
+
+
+inferImageMimeType : String -> Maybe MimeType.MimeImage
+inferImageMimeType image_url =
+    let
+        extension =
+            image_url
+                |> String.split "/"
+                |> last
+                {- Should never happen -} |> Maybe.withDefault ""
+                |> String.split "."
+                |> last
+                |> Maybe.withDefault ""
+                |> String.toLower
+    in
+    if extension == "png" then
+        Just MimeType.Png
+
+    else if extension == "jpg" || extension == "jpeg" then
+        Just MimeType.Jpeg
+
+    else if extension == "gif" then
+        Just MimeType.Gif
+
+    else if not <| String.isEmpty extension then
+        Just <| MimeType.OtherImage extension
+
+    else
+        Nothing
+
+
 imageFromUrl : String -> Seo.Image
 imageFromUrl url =
     { url = Pages.Url.external url
     , alt = ""
     , dimensions = Nothing
-    , mimeType = Nothing
+    , mimeType = inferImageMimeType url |> Maybe.map MimeType.Image
     }

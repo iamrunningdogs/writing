@@ -85,14 +85,25 @@ view :
 view app sharedModel =
     { title = app.data.header.title ++ " — Asier Elorz"
     , body =
+        let
+            image_widget =
+                case app.data.header.image of
+                    Nothing ->
+                        []
+
+                    Just image_url ->
+                        [ Widgets.postBannerImage image_url ]
+        in
         UI.column
             [ UI.spacing 10
             , UI.width UI.fill
             ]
-            [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size 25, UI_Font.bold ] [ UI.text app.data.header.title ] }
-            , Widgets.dateText "Publicado el " app.data.header.date
-            , UI.wrappedRow [ UI.spacing 5 ] (List.map Widgets.tag app.data.header.tags)
-            , UI.el [ UI.height (px 20) ] UI.none -- Dummy element to add spacing between the header and the text
-            , UI.column [ UI.spacing 15, UI.width UI.fill ] <| PostsMarkdown.parseBody app.data.body
-            ]
+        <|
+            image_widget
+                ++ [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size 25, UI_Font.bold ] [ UI.text app.data.header.title ] }
+                   , Widgets.dateText "Publicado el " app.data.header.date
+                   , UI.wrappedRow [ UI.spacing 5 ] (List.map Widgets.tag app.data.header.tags)
+                   , UI.el [ UI.height (px 20) ] UI.none -- Dummy element to add spacing between the header and the text
+                   , UI.column [ UI.spacing 15, UI.width UI.fill ] <| PostsMarkdown.parseBody app.data.body
+                   ]
     }

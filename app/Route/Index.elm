@@ -97,35 +97,21 @@ viewPost post =
                     []
 
                 Just image_url ->
-                    [ UI.el
-                        [ UI.width UI.fill
-                        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "1920 / 540"
-                        , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
-                        , UI_Background.image image_url
-                        , UI_Border.rounded 10
-
-                        --, UI.inFront <|
-                        --    UI.el
-                        --        [ UI.width UI.fill
-                        --        , UI.height UI.fill
-                        --        , UI_Background.gradient { angle = pi, steps = [ rgba255 24 26 27 0, rgba255 24 26 27 1 ] }
-                        --        , UI_Border.rounded 10
-                        --        ]
-                        --        UI.none
-                        ]
-                        UI.none
+                    [ UI.link []
+                        { url = post.header.url
+                        , label = Widgets.postBannerImage image_url
+                        }
                     ]
     in
     UI.column
         [ UI.width UI.fill
         , UI.spacing 10
         ]
-        ([ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ UI.text post.header.title ] }
-         , UI.wrappedRow [ UI.spacing 5 ] (Widgets.dateText "" post.header.date :: List.map Widgets.tag post.header.tags)
-         , UI.el [ UI.height (px 5) ] UI.none -- Dummy element to add spacing between the header and the text
-         ]
-            ++ image_widget
-            ++ [ PostsMarkdown.parseBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
+        (image_widget
+            ++ [ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ UI.text post.header.title ] }
+               , UI.wrappedRow [ UI.spacing 5 ] (Widgets.dateText "" post.header.date :: List.map Widgets.tag post.header.tags)
+               , UI.el [ UI.height (px 5) ] UI.none -- Dummy element to add spacing between the header and the text
+               , PostsMarkdown.parseBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
                , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
                , Widgets.horizontalSeparator 1
                , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator

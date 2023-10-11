@@ -2,7 +2,7 @@
 layout: post
 title: Has obtenido una flor de alma
 date: 2023-7-10
-image : images/spiritfarer.png
+image : /images/spiritfarer.png
 tags:
   videojuego
 ---
