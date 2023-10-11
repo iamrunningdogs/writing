@@ -194,7 +194,7 @@ postBannerImage : String -> Maybe String -> UI.Element msg
 postBannerImage image_url alt_text =
     UI.image
         [ UI.width UI.fill
-        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "1920 / 540"
+        , UI.htmlAttribute <| Html.Attributes.style "aspect-ratio" "750 / 250"
         , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
         , UI_Border.rounded 10
         , UI.clip
