@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Debería std::move ser especializable?'
 date: 2020-08-18
 tags:

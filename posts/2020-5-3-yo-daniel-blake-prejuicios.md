@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Yo, Daniel Blake y los prejuicios
 date: 2020-05-03
 tags:

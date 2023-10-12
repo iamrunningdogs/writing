@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Cómo las herramientas que usamos acotan el espacio de los videojuegos que podemos hacer'
 date: 2022-7-2
 tags:

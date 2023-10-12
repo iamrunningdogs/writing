@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Muchos programadores nunca escriben abstracciones
 date: 2023-3-1
 tags:

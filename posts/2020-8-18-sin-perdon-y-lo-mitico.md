@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Sin perdón y lo mítico'
 date: 2020-08-18
 tags:

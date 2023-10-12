@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Cult of the lamb: la fantasía de poder amable'
 date: 2022-8-31
 tags:

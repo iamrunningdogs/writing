@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Una breve reflexión sobre identidad y consumo
 date: 2023-9-22
 tags:

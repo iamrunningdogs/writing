@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '"Consumir contenido"'
 date: 2020-10-28
 tags:

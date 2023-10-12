@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'No me gusta defer'
 date: 2021-10-3
 tags:

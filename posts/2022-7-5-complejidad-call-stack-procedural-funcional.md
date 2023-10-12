@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La programación funcional mueve la complejidad hacia abajo en la call stack, la procedural hacia arriba'
 date: 2022-7-5
 tags:

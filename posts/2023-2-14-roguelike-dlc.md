@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Al roguelike le va bien el formato del DLC'
 date: 2023-2-14
 tags:

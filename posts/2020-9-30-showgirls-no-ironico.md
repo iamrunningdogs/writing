@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El disfrute de Showgirls no tiene por qué ser irónico'
 date: 2020-09-30
 tags:

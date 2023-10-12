@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '¿Está HTML obsoleto?'
 date: 2022-5-10
 tags:

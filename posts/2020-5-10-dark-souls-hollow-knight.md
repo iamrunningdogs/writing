@@ -1,5 +1,4 @@
 ---
-layout: post
 title: La imperfección de las obras innovadoras o mi Dark Souls favorito es Hollow Knight
 date: 2020-05-10
 tags:

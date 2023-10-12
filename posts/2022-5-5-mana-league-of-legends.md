@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El maná en League of Legends y el aprendizaje instintivo de mecánicas de juego'
 date: 2022-5-5
 tags:

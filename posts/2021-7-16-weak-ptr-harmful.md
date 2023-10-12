@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'weak_ptr considered harmful'
 date: 2021-7-16
 tags:

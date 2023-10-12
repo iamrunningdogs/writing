@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'std::move, ¡qué movida!'
 date: 2021-6-7
 tags:

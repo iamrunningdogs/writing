@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Braid Anniversary Edition y la lógica perversa de la mejora tecnológica'
 date: 2020-08-26
 tags:

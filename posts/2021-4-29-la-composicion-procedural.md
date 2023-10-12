@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La composición procedural'
 date: 2021-4-29
 tags:

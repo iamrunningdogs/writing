@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'En busca del cantamañanas'
 date: 2020-12-11
 tags:

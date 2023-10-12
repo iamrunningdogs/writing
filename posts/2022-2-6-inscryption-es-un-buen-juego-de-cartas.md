@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Inscryption es un buen juego de cartas'
 date: 2022-2-6
 tags:

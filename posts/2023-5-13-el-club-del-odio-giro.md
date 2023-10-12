@@ -1,5 +1,4 @@
 ---
-layout: post
 title: El club del odio usa un giro de trama para reforzar su mensaje
 date: 2023-5-13
 image: /images/el-club-del-odio.png

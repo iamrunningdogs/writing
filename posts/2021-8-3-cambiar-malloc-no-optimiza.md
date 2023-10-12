@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Cambiar la implementación de malloc posiblemente no optimice tu programa'
 date: 2021-8-3
 tags:

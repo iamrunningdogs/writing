@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El uso expresionista de la importancia en el lenguaje cinematográfico'
 date: 2021-1-25
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ori and the creep of the features
 date: 2020-04-1
 tags:

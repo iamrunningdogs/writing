@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Argumentos contra la progresión y la personalización en el videojuego
 date: 2020-08-20
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Sobre las reuniones'
 date: 2022-1-26
 tags:

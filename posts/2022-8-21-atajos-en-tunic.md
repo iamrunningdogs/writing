@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Los atajos en Tunic'
 date: 2022-8-21
 tags:

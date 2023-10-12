@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Un óptimo local peligroso'
 date: 2022-2-25
 tags:

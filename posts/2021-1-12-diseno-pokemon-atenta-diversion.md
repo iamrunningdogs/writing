@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El diseño de Pokémon atenta contra su propia diversión'
 date: 2021-1-12
 tags:

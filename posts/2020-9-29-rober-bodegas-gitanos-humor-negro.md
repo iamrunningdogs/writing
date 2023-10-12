@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Los chistes de gitanos de Rober Bodegas y el buen humor negro'
 date: 2020-09-29
 tags:

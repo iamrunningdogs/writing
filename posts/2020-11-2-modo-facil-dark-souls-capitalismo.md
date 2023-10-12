@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Modo fácil de Dark Souls y capitalismo. Relación, si la hubiere.'
 date: 2020-11-02
 tags:

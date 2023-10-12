@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La concurrencia estructurada también es especial'
 date: 2022-9-15
 tags:

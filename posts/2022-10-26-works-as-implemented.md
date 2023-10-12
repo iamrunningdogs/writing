@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Works-as-implemented'
 date: 2022-10-26
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Pinned vector: la solución perfecta a un problema muy concreto'
 date: 2021-8-9
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Berlin Alexanderplatz y el cine de gangsters
 date: 2020-08-27
 tags:

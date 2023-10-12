@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La (trágica) historia de amor LGBT'
 date: 2020-10-21
 tags:

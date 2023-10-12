@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Pequeña apología de las macros'
 date: 2020-10-12
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'No tienes una teoría, con suerte tienes una hipótesis'
 date: 2020-12-01
 tags:

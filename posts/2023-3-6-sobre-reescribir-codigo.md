@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Sobre reescribir código
 date: 2023-3-6
 tags:

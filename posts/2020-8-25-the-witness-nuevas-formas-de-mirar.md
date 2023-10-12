@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'The Witness, nuevas formas de mirar'
 date: 2020-08-25
 tags:

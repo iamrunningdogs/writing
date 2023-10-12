@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Deificar a los algoritmos nos puede llevar a la impunidad de los responsables de sus consecuencias'
 date: 2020-12-11
 tags:

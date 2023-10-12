@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La belleza de no saber cómo funciona Pokémon'
 date: 2020-09-22
 tags:

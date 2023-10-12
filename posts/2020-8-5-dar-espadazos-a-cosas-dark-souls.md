@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Sobre dar espadazos a cosas y otra vez Dark Souls'
 date: 2020-08-05
 tags:

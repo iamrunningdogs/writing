@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Un argumento a favor de nombrar sistemas internos'
 date: 2023-2-13
 tags:

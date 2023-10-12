@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Cómo Dead cells te enseña a jugar sin perder vida'
 date: 2022-1-24
 tags:

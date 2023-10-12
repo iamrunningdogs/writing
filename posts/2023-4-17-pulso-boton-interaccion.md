@@ -1,5 +1,4 @@
 ---
-layout: post
 title: No son los pulsos, es el botón de interacción
 date: 2023-4-17
 tags:

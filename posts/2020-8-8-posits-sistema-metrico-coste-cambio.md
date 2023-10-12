@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Sobre los posits, el sistema métrico en Estados Unidos y el coste del cambio'
 date: 2020-08-08
 tags:

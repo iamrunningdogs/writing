@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Toda clase que especialice las operaciones de mover debería ser construible por defecto'
 date: 2020-09-21
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: La pureza de las funciones impuras
 date: 2023-6-20
 tags:

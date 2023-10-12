@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El viaje rápido cambia nuestra relación con el mundo abierto'
 date: 2023-2-26
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Los datos en la programación de UI: modelo, estado y configuración'
 date: 2021-10-12
 tags:

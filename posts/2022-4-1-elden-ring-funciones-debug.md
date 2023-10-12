@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Elden Ring y dejarse unas funciones de debug'
 date: 2022-4-1
 tags:

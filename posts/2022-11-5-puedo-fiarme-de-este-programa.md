@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '¿Puedo confiar en este programa?'
 date: 2022-11-5
 tags:

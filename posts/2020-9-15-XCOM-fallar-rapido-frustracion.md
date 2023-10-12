@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Sobre XCOM, fallar rápido y la frustración'
 date: 2020-09-15
 description: ¿Alguna vez te has preguntado por qué, aunque *XCOM* tiene la estructura formal de un roguelike, no se juega ni se siente como tal? Este artículo explora por qué a los jugadores no les importa morir y volver a empezar una y otra vez en juegos como *The binding of Isaac*, *Spelunky* o *Dead cells* pero guardan compulsivamente tras cada turno y vuelen atrás ante cada error en *XCOM*.

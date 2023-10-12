@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'The Stanley parable, Firewatch, Florence: la interactividad sin desafío'
 date: 2020-09-05
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '¿Por qué es C la lingua franca de la programación?'
 date: 2022-2-1
 tags:

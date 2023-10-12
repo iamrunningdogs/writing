@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Reivindiquemos Los del túnel'
 date: 2020-09-04
 tags:

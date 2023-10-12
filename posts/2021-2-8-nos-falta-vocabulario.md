@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Si algo podemos aprender de la programación funcional es que nos falta vocabulario'
 date: 2021-2-8
 tags:

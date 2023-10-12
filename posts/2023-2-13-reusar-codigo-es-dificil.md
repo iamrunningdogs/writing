@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Reusar código es difícil'
 date: 2023-2-13
 tags:

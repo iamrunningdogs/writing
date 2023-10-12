@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Anomalisa tiene que ser una película de animación'
 date: 2020-09-26
 tags:

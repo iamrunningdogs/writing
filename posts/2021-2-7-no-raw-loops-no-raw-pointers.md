@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'No raw loops, no raw pointers. Estilo y arquitectura'
 date: 2021-2-7
 tags:

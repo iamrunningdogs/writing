@@ -1,5 +1,4 @@
 ---
-layout: post
 title: El uso que la web3 hace de la tecnología blockchain no resuelve problemas fundamentales de la propiedad privada
 date: 2023-4-5
 tags:

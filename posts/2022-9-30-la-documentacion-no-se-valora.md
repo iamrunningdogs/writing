@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'La documentación es mala (o inexistente) porque no se valora'
 date: 2022-9-30
 tags:

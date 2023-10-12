@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Hacia un sistema de memoria escalable y compatible con RAII
 date: 2020-04-26
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Celeste: Farewell y aprender de los speedrunners'
 date: 2020-03-25
 tags:

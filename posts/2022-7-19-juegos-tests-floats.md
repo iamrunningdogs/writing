@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Juegos, tests y floats'
 date: 2022-7-19
 tags:

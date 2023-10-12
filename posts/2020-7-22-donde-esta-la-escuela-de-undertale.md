@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '¿Dónde está la escuela de Undertale?'
 date: 2020-07-22
 tags:

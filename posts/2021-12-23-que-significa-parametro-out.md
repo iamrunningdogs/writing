@@ -1,5 +1,4 @@
 ---
-layout: post
 title: '¿Qué significa que un parámetro sea `out`?'
 date: 2021-12-14
 tags:

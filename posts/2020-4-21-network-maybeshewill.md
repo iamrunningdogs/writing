@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Cómo Maybeshewill resignifica un discurso de Network
 date: 2020-04-21
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Boy erased y The miseducation of Cameron Post argumentan lo mismo pero a distintos niveles
 date: 2021-11-2
 tags:

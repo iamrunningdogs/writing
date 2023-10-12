@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Manderlay trata sobre lo ridículo del salvador blanco'
 date: 2022-8-30
 tags:

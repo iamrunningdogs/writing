@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'El algoritmo de salto en la cabeza de Super Mario'
 date: 2022-1-20
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: malloc es especial
 date: 2020-06-28
 tags:

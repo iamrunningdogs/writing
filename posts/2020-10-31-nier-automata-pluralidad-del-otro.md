@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'NieR: Automata, la pluralidad del otro'
 date: 2020-10-31
 tags:

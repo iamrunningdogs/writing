@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Simulaciones determinísticas reproducibles y su aplicación al desarrollo de videojuegos
 date: 2023-7-22
 tags:

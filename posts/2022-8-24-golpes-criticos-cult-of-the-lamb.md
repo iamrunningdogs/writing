@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Los golpes críticos en Cult of the lamb'
 date: 2022-8-24
 tags:

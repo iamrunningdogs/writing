@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Copy-on-write no se compone muy bien'
 date: 2021-5-6
 tags:

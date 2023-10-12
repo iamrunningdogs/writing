@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Desarrollar intuición para el functor aplicativo'
 date: 2022-10-9
 tags:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Hay una cantidad correcta de relleno'
 date: 2022-11-11
 tags:

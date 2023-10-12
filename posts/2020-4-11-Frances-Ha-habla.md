@@ -1,5 +1,4 @@
 ---
-layout: post
 title: El habla en Frances Ha
 date: 2020-04-11
 tags:

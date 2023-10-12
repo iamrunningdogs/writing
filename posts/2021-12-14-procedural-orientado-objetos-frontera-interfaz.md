@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Programación procedural, orientación a objetos y dónde se pone la frontera de la interfaz
 date: 2021-12-14
 tags:

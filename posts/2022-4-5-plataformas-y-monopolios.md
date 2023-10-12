@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'Plataformas y monopolios'
 date: 2022-4-5
 tags:
