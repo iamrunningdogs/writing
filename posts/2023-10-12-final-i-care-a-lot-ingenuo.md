@@ -1,12 +1,12 @@
 ---
 title: El final de I care a lot es bastante ingenuo
-date: 2023-9-22
+date: 2023-10-12
 image: /images/i-care-a-lot.png
 image-alt: Fotograma de la película "I care a lot" en el que podemos ver a los personajes de Peter Dinklage y Rosamund Pike sentados uno al lado de la otra, en un primer plano en el que sólo se ven sus caras. Dinklage está situado algo más bajo que Pike y la mira, mientras ella mira a la distancia.
 tags:
   cine
 ---
-*I care a lot* (J Blakeson, 2020) es un thriller genial sobre una mujer que dirige una empresa de cuidados de personas ancianas. La empresa en realidad tiene como objetivo estafar a estas personas, compinchándose con sus médicos para que falsifiquen sus historias exagerando los rasgos de incapacidad para que un juez falle a favor de asignarles un tutor legal. Marla Grayson, interpretada por Rosamund Pike, entonces interna a la persona en una residencia de confianza en la que sabe que no tendrá acceso a teléfono ni a visitas de sus familiares y gestiona sus bienes para vender todas las propiedades y transferir el dinero a su cuenta en forma de pago por los servicios. El thriller comienza cuando sin saberlo intenta estafar de esta manera a la madre de un capo de la mafia, convirtiéndose así en objetivo de estos. La interpretación de Pike haciendo de mala vuelve a ser tan espectacular como en *Gone girl* (David Fincher, 2014).
+*I care a lot* (J Blakeson, 2020) es un thriller genial sobre una mujer que dirige una empresa de cuidados de personas ancianas. La empresa en realidad tiene como objetivo estafar a estas personas, compinchándose con sus médicos para que falsifiquen sus historias exagerando los rasgos de incapacidad para que un juez falle a favor de asignarles un tutor legal. Marla Grayson, interpretada por Rosamund Pike, entonces interna a la persona en una residencia de confianza en la que sabe que no tendrá acceso a teléfono ni a visitas de sus familiares y gestiona sus bienes para vender todas las propiedades y transferir el dinero a su cuenta en forma de pago por los servicios. El thriller comienza cuando sin saberlo intenta estafar de esta manera a la madre de un capo de la mafia, convirtiéndose así en objetivo del crimen organizado. La interpretación de Pike haciendo de mala vuelve a ser tan espectacular como en *Gone girl* (David Fincher, 2014).
 
 Este texto, como puede deducirse por el título, desvela el final de la película.
 
