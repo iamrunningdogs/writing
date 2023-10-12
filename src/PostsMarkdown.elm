@@ -1,7 +1,11 @@
 module PostsMarkdown exposing (parseBody)
 
+import Colors
 import Element as UI
+import Element.Background as UI_Background
+import Element.Border as UI_Border
 import Element.Font as UI_Font
+import Html.Attributes
 import Markdown.Block
 import Markdown.Html
 import Markdown.Parser
@@ -66,6 +70,20 @@ markdownRenderer =
         , unorderedList = unorderedList
         , link = \{ destination } body -> Widgets.blueLink [] { url = destination, label = UI.paragraph [] body }
         , heading = \{ level, rawText, children } -> Widgets.complexHeading [ UI.paddingEach { top = 10, left = 0, bottom = 0, right = 0 } ] (Markdown.Block.headingLevelToInt level) rawText children
+        , codeBlock =
+            defaultRenderer.codeBlock
+                >> UI.el
+                    [ UI_Border.width 1
+                    , UI_Border.color Colors.footerBorder
+                    , UI_Background.color Colors.widgetBackground
+                    , UI_Border.rounded 10
+                    , UI.paddingXY 15 0
+                    , UI.width UI.fill
+                    , UI.scrollbarX
+
+                    -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
+                    , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+                    ]
     }
 
 

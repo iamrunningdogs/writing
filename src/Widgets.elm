@@ -1,7 +1,8 @@
 module Widgets exposing (..)
 
+import Colors
 import DateTime
-import Element as UI exposing (px, rgb255)
+import Element as UI exposing (px)
 import Element.Background as UI_Background
 import Element.Border as UI_Border
 import Element.Font as UI_Font
@@ -14,19 +15,14 @@ import Posts
 import Url
 
 
-linkBlue : UI.Color
-linkBlue =
-    rgb255 83 149 202
-
-
 link : List (UI.Attribute msg) -> { url : String, label : UI.Element msg } -> UI.Element msg
 link attributes args =
-    UI.link (UI.mouseOver [ UI_Font.color linkBlue ] :: attributes) args
+    UI.link (UI.mouseOver [ UI_Font.color Colors.linkBlue ] :: attributes) args
 
 
 blueLink : List (UI.Attribute msg) -> { url : String, label : UI.Element msg } -> UI.Element msg
 blueLink attributes args =
-    UI.link (UI_Font.color linkBlue :: attributes) args
+    UI.link (UI_Font.color Colors.linkBlue :: attributes) args
 
 
 tag : String -> UI.Element msg
@@ -36,12 +32,12 @@ tag tag_name =
         , label =
             UI.row
                 [ UI.paddingXY 7 2
-                , UI_Background.color (rgb255 36 38 74)
-                , UI_Font.color (rgb255 51 125 255)
+                , UI_Background.color Colors.tagBackground
+                , UI_Font.color Colors.tagText
                 , UI_Font.size 14
                 , UI_Border.rounded 5
                 , UI.spacing 3
-                , UI.mouseOver [ UI_Background.color (rgb255 27 73 88), UI_Font.color (rgb255 232 230 227) ]
+                , UI.mouseOver [ UI_Background.color Colors.tagHoveredBackground, UI_Font.color Colors.tagHoveredText ]
                 ]
                 [ Fontawesome.text [] "\u{F02B}" -- fa-tag
                 , UI.text tag_name
@@ -112,15 +108,15 @@ complexHeading attributes level label children =
 
 dateText : String -> DateTime.Date -> UI.Element msg
 dateText prefix date =
-    UI.paragraph [ UI_Font.italic, UI_Font.color (rgb255 168 160 149) ] [ UI.text <| prefix ++ DateTime.toStringText date ]
+    UI.paragraph [ UI_Font.italic, UI_Font.color Colors.dateText ] [ UI.text <| prefix ++ DateTime.toStringText date ]
 
 
 searchBox : (String -> msg) -> String -> UI.Element msg
 searchBox make_message current_text =
     UI_Input.text
         [ UI.width UI.fill
-        , UI_Background.color (rgb255 34 36 38)
-        , UI_Border.color (rgb255 168 160 149)
+        , UI_Background.color Colors.widgetBackground
+        , UI_Border.color Colors.widgetBorder
         ]
         { onChange = make_message
         , text = current_text
@@ -154,7 +150,7 @@ horizontalSeparator : Int -> UI.Element msg
 horizontalSeparator width =
     UI.el
         [ UI.height (px width)
-        , UI_Background.color (rgb255 53 57 59)
+        , UI_Background.color Colors.horizontalSeparator
         , UI.width UI.fill
         ]
         UI.none

@@ -4,6 +4,7 @@ import BackendTask exposing (BackendTask)
 import Browser.Dom
 import Browser.Events
 import Browser.Navigation
+import Colors
 import Effect exposing (Effect)
 import Element as UI exposing (px, rgb255)
 import Element.Background as UI_Background
@@ -137,8 +138,8 @@ view :
 view sharedData page model toMsg pageView =
     { body =
         [ UI.layout
-            [ UI_Background.color (UI.rgb255 24 26 27)
-            , UI_Font.color (UI.rgb255 211 207 201)
+            [ UI_Background.color Colors.background
+            , UI_Font.color Colors.text
             , UI_Font.size 18
             , UI_Font.family [ UI_Font.typeface "Helvetica", UI_Font.sansSerif ]
             ]
@@ -192,7 +193,7 @@ header { window_width, all_post_filenames } =
         random_post_button attributes =
             UI.el
                 ([ UI.pointer
-                 , UI.mouseOver [ UI_Font.color Widgets.linkBlue ]
+                 , UI.mouseOver [ UI_Font.color Colors.linkBlue ]
                  , UI_Events.onClick (Msg_RandomPostClicked all_post_filenames)
                  ]
                     ++ attributes
@@ -257,9 +258,9 @@ header { window_width, all_post_filenames } =
 footer : UI.Element msg
 footer =
     UI.el
-        [ UI_Background.color (rgb255 34 36 38)
+        [ UI_Background.color Colors.widgetBackground
         , UI_Border.widthXY 0 1
-        , UI_Border.color (rgb255 58 62 65)
+        , UI_Border.color Colors.footerBorder
         , UI.width UI.fill
         , UI.height (px 89)
         , UI.alignBottom
