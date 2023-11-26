@@ -18,4 +18,4 @@ La escena es todo menos épica. En nada se parece a la batalla que abre la pelí
 
 *Gangs of New York* usa el enfoque para hablar sobre cómo la pelea del penúltimo contra el último es un recurso del poder para mantenerse y mantener las estructuras de opresión. Mientras la película nos muestra las andanzas de los personajes de DiCaprio y Daniel Day Lewis vemos el mundo a través de sus ojos, lo que es importante para ellos, lo que buscan conseguir, a quiénes consideran amigos y enemigos. El cambio de enfoque sirve para relativizar sus puntos de vista y que nos demos cuenta de su visión de túnel. Mientras están inmersos en sus rencillas de bandas están confinados en los barrios pobres del sur de Manhattan, haciéndose daño sólo entre ellos y malvendiendo sus votos e influencia de caciques a políticos corruptos a cambio de migas, sin entender que sus intereses comunes son más que sus diferencias.
 
-<youtube id="x-EhVB22S1Zqk" />
+<youtube id="EhVB22S1Zqk" />
