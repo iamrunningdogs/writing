@@ -158,14 +158,18 @@ horizontalSeparator width =
 
 embedYoutubeVideo : List (UI.Attribute msg) -> String -> UI.Element msg
 embedYoutubeVideo attributes youtube_video_id =
-    UI.el attributes <|
+    let
+        default_attributes =
+            [ UI.width <| UI.maximum 560 UI.fill
+            ]
+    in
+    UI.el (default_attributes ++ attributes) <|
         UI.html <|
             Html.iframe
-                [ Html.Attributes.width 560
-                , Html.Attributes.height 315
-                , Html.Attributes.src <| "https://www.youtube.com/embed/" ++ youtube_video_id
+                [ Html.Attributes.src <| "https://www.youtube.com/embed/" ++ youtube_video_id
                 , Html.Attributes.attribute "allow" "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 , Html.Attributes.attribute "allowfullscreen" "true"
+                , Html.Attributes.style "aspect-ratio" "16 / 9"
                 ]
                 []
 
