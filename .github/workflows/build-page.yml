@@ -18,7 +18,7 @@ jobs:
       - name: Install node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '22'
 
       # `elm-pages build` will fail if lamdera is not installed. 
       # It is made its own step because it has several steps.
@@ -31,7 +31,7 @@ jobs:
       - name: Install tools that are needed by elm-pages
         run: | 
           npm install -g elm-optimize-level-2
-          npm install -g elm-review@2.14
+          npm install -g elm-review
           npm install -g elm-format
 
       - name: Build page
