@@ -2,7 +2,7 @@ module SeoConfig exposing (defaultSeo, imageFromUrl, makeHeadTags)
 
 import Head
 import Head.Seo as Seo
-import LanguageTag.Country
+import LanguageTag.Region
 import LanguageTag.Language
 import MimeType
 import Pages.Url
@@ -21,7 +21,7 @@ defaultSeo =
             , mimeType = Just <| MimeType.Image MimeType.Png
             }
         , description = "Blog personal de Asier Elorz, en el que escribo sobre cosas que me interesan."
-        , locale = Just ( LanguageTag.Language.es, LanguageTag.Country.es )
+        , locale = Just ( LanguageTag.Language.es, LanguageTag.Region.es )
         , title = "Página principal — Asier Elorz"
         }
 

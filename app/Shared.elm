@@ -13,7 +13,7 @@ import Element.Events as UI_Events
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Html exposing (Html)
-import LanguageTag.Country exposing (to)
+import LanguageTag.Region exposing (to)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Platform.Cmd as Cmd
