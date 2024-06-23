@@ -31,9 +31,7 @@ jobs:
       - name: Install tools that are needed by elm-pages
         run: | 
           npm install -g elm-optimize-level-2
-          npm install -g elm-review
           npm install -g elm-format
-          npx elm-json upgrade --unsafe
 
       - name: Build page
         run: npx elm-pages@3.0.8 build
