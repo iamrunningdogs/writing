@@ -1,5 +1,5 @@
 ---
-title: King Park en directo es uun espectáculo grotesco
+title: King Park en directo es un espectáculo grotesco
 date: 2024-6-28
 image: /images/jordan-dreyer.png
 image-alt: Fotograma del vídeo de La Dispute en el que tocan King Park en directo en Melbourne, en agosto de 2023. Es un plano contrapicado en blanco y negro de Jordan Dreyer, el cantante del grupo, cantando con el micrófono delante de la boca. El fondo es negro salvo por la luz de los focos.
