@@ -3,6 +3,7 @@ title: Cómo Maybeshewill resignifica un discurso de Network
 date: 2020-04-21
 tags:
   cine
+  música
 ---
 *Network* (Sidney Lumet, 1976) narra la historia de una productora de televisión, interpretada por Faye Dunaway, que logra ascender en el mundo del audiovisual rescatando a un acabado presentador de informativos y convirtiéndolo en una especie de profeta loco. La película tiene algunos de los discursos más icónicos de la historia del cine que le valieron al actor que interpretaba al excéntrico presentador, Peter Finch, un bien merecido oscar. Es en el primero de estos discursos en el que me quiero centrar.
 
