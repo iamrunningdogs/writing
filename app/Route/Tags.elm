@@ -6,7 +6,6 @@ import Effect
 import Element as UI
 import FatalError exposing (FatalError)
 import Head
-import Head.Seo as Seo
 import PagesMsg exposing (PagesMsg)
 import Posts
 import Route
@@ -108,10 +107,11 @@ view app shared model =
                     |> Posts.groupBy (\post -> post.tags)
                     |> List.sortBy Tuple.first
 
+
             view_grouped_posts : ( String, List Posts.PostHeader ) -> UI.Element msg
             view_grouped_posts ( tag, posts_for_a_month ) =
                 UI.column [ UI.spacing 10, UI.width UI.fill ]
-                    (Widgets.heading [ UI.paddingEach { bottom = 10, top = 0, left = 0, right = 0 } ] 3 (capitalize tag) :: List.map Widgets.postMenuEntry posts_for_a_month)
+                    (Widgets.heading [ UI.paddingEach { bottom = 10, top = 0, left = 0, right = 0 } ] 3 (kebab_case_to_sentence <| capitalize tag) :: List.map Widgets.postMenuEntry posts_for_a_month)
 
             search_box =
                 Widgets.searchBox (PagesMsg.fromMsg << Msg_SearchTextChanged) model.search_text
