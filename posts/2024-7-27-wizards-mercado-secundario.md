@@ -4,7 +4,7 @@ date: 2024-7-27
 image: /images/black-lotus.png
 image-alt: Imágen de la carta Black Lotus del juego Magic The Gathering. Es una flor de loto de color azul oscuro, en algunas partes casi negro, sobre un fondo verde. Unos rayos de luz atraviesan la imagen en diagonal desde la esquina superior izquierda e iluminan la flor, acentuando luces y sombras.
 tags:
-  juegos de mesa
+  juegos-de-mesa
 ---
 Si alguien juega o se ha planteado jugar a _Magic: The Gathering_, se habrá dado cuenta de que el mayor problema que tiene el juego es el precio. Jugar a _Magic_ es muy caro. Yo me quedé de piedra cuando, tras una década sin jugar apenas, este año me planteé volver y descubrí que los precios de la mayoría de productos oficiales (sobres, mazos preconstruidos, inscripciones a torneos...) prácticamente se habían duplicado. Sin estar dentro, es bastante difícil de creer que un juego de mesa sea tan caro. Por lo general, se espera que un juego de mesa de 40€ traiga una caja grande, tablero, figuritas... Que sea algo elaborado y costoso de producir, como para justificar el precio. ¿Cómo puede ser que un mazo de 100 cartas, que es cartón impreso, valga 60€? ¿Por qué la gente lo paga?
 
