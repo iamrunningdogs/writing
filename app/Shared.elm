@@ -6,14 +6,13 @@ import Browser.Events
 import Browser.Navigation
 import Colors
 import Effect exposing (Effect)
-import Element as UI exposing (px, rgb255)
+import Element as UI exposing (px)
 import Element.Background as UI_Background
 import Element.Border as UI_Border
 import Element.Events as UI_Events
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Html exposing (Html)
-import LanguageTag.Region exposing (to)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Platform.Cmd as Cmd
@@ -265,4 +264,16 @@ footer =
         , UI.height (px 89)
         , UI.alignBottom
         ]
-        UI.none
+        <| UI.link 
+            [ UI.centerX
+            , UI.centerY
+            ] 
+            { url = "/rss.xml"
+            , label = UI.image 
+                [ UI.width (px 32)
+                , UI.height (px 32)
+                ] 
+                { src = "/images/rss.png"
+                , description = "Logo of RSS."
+                }
+            }
