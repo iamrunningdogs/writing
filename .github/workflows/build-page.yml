@@ -34,6 +34,9 @@ jobs:
           npm install -g elm-review@2.11.2
           npm install -g elm-format@0.8.7
 
+      - name: Generate RSS feed
+        run: npx elm-pages@3.0.15 run script/src/Rss.elm
+
       - name: Build page
         run: npx elm-pages@3.0.15 build
 
