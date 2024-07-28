@@ -2,6 +2,7 @@ module DateTime exposing
     ( Date
     , compareNewer
     , compareOlder
+    , fromPosix
     , intToMonth
     , jsonDecode
     , monthToInt
@@ -11,12 +12,14 @@ module DateTime exposing
     , sortOldestToNewest
     , toStringText
     , toStringYYYYMMDD
+    , toStringRss
     )
 
 import Json.Decode
 import Json.Encode
 import Parser exposing ((|.), (|=), Parser, Problem(..), problem)
 import Time
+import Array exposing (Array)
 
 
 type alias Date =
@@ -146,6 +149,58 @@ monthToString m =
             "diciembre"
 
 
+monthToStringEngShort : Time.Month -> String
+monthToStringEngShort m =
+    case m of
+        Time.Jan ->
+            "Jan"
+
+        Time.Feb ->
+            "Feb"
+
+        Time.Mar ->
+            "Mar"
+
+        Time.Apr ->
+            "Apr"
+
+        Time.May ->
+            "May"
+
+        Time.Jun ->
+            "Jun"
+
+        Time.Jul ->
+            "Jul"
+
+        Time.Aug ->
+            "Aug"
+
+        Time.Sep ->
+            "Sep"
+
+        Time.Oct ->
+            "Oct"
+
+        Time.Nov ->
+            "Nov"
+
+        Time.Dec ->
+            "Dec"
+
+
+weekdayToStringEngShort : Time.Weekday -> String
+weekdayToStringEngShort d =
+    case d of
+        Time.Mon -> "Mon"
+        Time.Tue -> "Tue"
+        Time.Wed -> "Wed"
+        Time.Thu -> "Thu"
+        Time.Fri -> "Fri"
+        Time.Sat -> "Sat"
+        Time.Sun -> "Sun"
+
+
 parserISO8601 : Parser Date
 parserISO8601 =
     Parser.succeed Date
@@ -199,6 +254,23 @@ toStringText date =
         ++ monthToString date.month
         ++ " de "
         ++ String.fromInt date.year
+
+
+toStringRss : Date -> String
+toStringRss date = 
+    let
+        weekday = toMillis date
+            |> Time.millisToPosix
+            |> Time.toWeekday Time.utc
+    in
+        weekdayToStringEngShort weekday
+        ++ ", "
+        ++ String.fromInt date.day
+        ++ " "
+        ++ monthToStringEngShort date.month
+        ++ " "
+        ++ String.fromInt date.year
+        ++ " 00:00:00 +0000"
 
 
 problemToString : Parser.Problem -> String
@@ -295,3 +367,151 @@ sortOldestToNewest dates =
 sortNewestToOldest : List Date -> List Date
 sortNewestToOldest dates =
     List.sortWith compareNewer dates
+
+
+fromPosix : Time.Posix -> Date
+fromPosix posix = 
+    { year = Time.toYear Time.utc posix
+    , month = Time.toMonth Time.utc posix
+    , day = Time.toDay Time.utc posix
+    }
+
+
+-- All functions below have been copied from PanagiotisGeorgiadis/elm-datetime
+toMillis : Date -> Int
+toMillis { year, month, day } =
+    millisSinceEpoch year
+        + millisSinceStartOfTheYear year month
+        + millisSinceStartOfTheMonth day
+
+
+millisSinceEpoch : Int -> Int
+millisSinceEpoch year =
+    let
+        epochYear =
+            1970
+
+        getTotalMillis =
+            List.sum << List.map millisInYear
+    in
+    if year >= 1970 then
+        -- We chose (year - 1) here because we want the milliseconds
+        -- in the start of the target year in order to add
+        -- the months + days + hours + minutes + secs + millis if we want to.
+        getTotalMillis (List.range epochYear (year - 1))
+
+    else
+        -- We chose (epochYear - 1) here because we want to
+        -- get the total milliseconds of all the previous years,
+        -- including the target year which we'll then add
+        -- the months + days + hours + minutes + secs + millis in millis
+        -- in order to get the desired outcome.
+        -- Example: Target date = 26 Aug 1950.
+        -- totalMillis from 1/1/1950 - 1/1/1969 = -631152000000
+        -- 26 Aug date millis = 20476800000
+        -- Resulting millis will be = -631152000000 + 20476800000 == -610675200000 == 26 Aug 1950
+        Basics.negate <| getTotalMillis (List.range year (epochYear - 1))
+
+
+millisInYear : Int -> Int
+millisInYear year =
+    if isLeapYear year then
+        millisInADay * 366
+
+    else
+        millisInADay * 365
+
+
+isLeapYear : Int -> Bool
+isLeapYear year =
+    (modBy 4 year == 0) && ((modBy 400 year == 0) || not (modBy 100 year == 0))
+
+
+millisInADay : Int
+millisInADay =
+    1000 * 60 * 60 * 24
+
+
+millisSinceStartOfTheYear : Int -> Time.Month -> Int
+millisSinceStartOfTheYear year month =
+    List.foldl
+        (\m res ->
+            res + (millisInADay * lastDayOf year m)
+        )
+        0
+        (getPrecedingMonths month)
+
+
+lastDayOf : Int -> Time.Month -> Int
+lastDayOf year month =
+    case month of
+        Time.Jan ->
+            31
+
+        Time.Feb ->
+            if isLeapYear year then
+                29
+
+            else
+                28
+
+        Time.Mar ->
+            31
+
+        Time.Apr ->
+            30
+
+        Time.May ->
+            31
+
+        Time.Jun ->
+            30
+
+        Time.Jul ->
+            31
+
+        Time.Aug ->
+            31
+
+        Time.Sep ->
+            30
+
+        Time.Oct ->
+            31
+
+        Time.Nov ->
+            30
+
+        Time.Dec ->
+            31
+
+
+months : Array Time.Month
+months =
+    Array.fromList
+        [ Time.Jan
+        , Time.Feb
+        , Time.Mar
+        , Time.Apr
+        , Time.May
+        , Time.Jun
+        , Time.Jul
+        , Time.Aug
+        , Time.Sep
+        , Time.Oct
+        , Time.Nov
+        , Time.Dec
+        ]
+
+
+getPrecedingMonths : Time.Month -> List Time.Month
+getPrecedingMonths month =
+    Array.toList <|
+        Array.slice 0 (monthToInt month - 1) months
+    
+
+millisSinceStartOfTheMonth : Int -> Int
+millisSinceStartOfTheMonth day =
+    -- -1 on the day because we are currently on that day and it hasn't passed yet.
+    -- We also need time in order to construct the full posix.
+    millisInADay * day - 1

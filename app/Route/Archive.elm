@@ -6,7 +6,6 @@ import Effect
 import Element as UI
 import FatalError exposing (FatalError)
 import Head
-import Head.Seo as Seo
 import PagesMsg exposing (PagesMsg)
 import Posts
 import Route
