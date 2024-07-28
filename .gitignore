@@ -3,5 +3,4 @@ elm-stuff/
 dist/
 codegen/
 .elm-pages/
-public/rss.xml
 functions/render/elm-pages-cli.js
