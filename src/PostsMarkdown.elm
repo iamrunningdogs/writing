@@ -84,6 +84,7 @@ markdownRenderer =
                     -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
                     , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
                     ]
+        , blockQuote = blockQuote
     }
 
 
@@ -108,6 +109,18 @@ unorderedList : List (Markdown.Block.ListItem (UI.Element msg)) -> UI.Element ms
 unorderedList items =
     List.map unorderedListItem items
         |> UI.column [ UI.spacing 5 ]
+
+
+blockQuote : List (UI.Element msg) -> UI.Element msg
+blockQuote paragraphs =
+    UI.el [ UI.paddingXY 0 4 ] <|
+        UI.column
+            [ UI.padding 10
+            , UI.spacing 20
+            , UI_Border.widthEach { top = 0, bottom = 0, right = 0, left = 10 }
+            , UI_Border.color Colors.blockQuoteLeftBar
+            ]
+            paragraphs
 
 
 type alias MarkdownParserError =

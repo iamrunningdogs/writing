@@ -61,3 +61,7 @@ dateText =
 horizontalSeparator : UI.Color
 horizontalSeparator =
     rgb255 53 57 59
+
+
+blockQuoteLeftBar : UI.Color
+blockQuoteLeftBar = UI.rgba255 204 204 204 0.7
