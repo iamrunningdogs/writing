@@ -13,10 +13,12 @@ run =
             |> BackendTask.andThen (List.map Posts.loadPost >> BackendTask.combine)
             |> BackendTask.map (List.sortWith <| \a b -> DateTime.compareNewer a.header.date b.header.date)
     in
-        BackendTask.map2 (compose_rss_xml) today posts
+        Script.log "Generating rss.xml..."
+            |> Script.doThen (BackendTask.map2 (compose_rss_xml) today posts)
             |> BackendTask.map make_rss_file
             |> BackendTask.andThen (Script.writeFile >> BackendTask.allowFatal)
             |> Script.doThen (Script.log "rss.xml file successfully written")
+            |> BackendTask.onError (\_ -> Script.log "Could not write rss.xml")
             |> Script.withoutCliOptions
 
 
