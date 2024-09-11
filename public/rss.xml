@@ -443,7 +443,7 @@
       <link>https://asielorz.github.io/posts/std-move-que-movida</link>
       <guid>https://asielorz.github.io/posts/std-move-que-movida</guid>
       <pubDate>Mon, 7 Jun 2021 00:00:00 +0000</pubDate>
-      <description>La definición de mover un objeto en C++ ha sido motivo de polémica desde el principio. En parte es comprensible, este es un campo en el que C++ fue pionero, y la solución que se diseñó fue una que resolvía de forma bastante elegante problemas importantes que el lenguaje arrastraba desde siempre, lo cual es meritorio cuando no hay ninguna referencia en la que basarse y de cuyos errores aprender. Diez años después, y con otros lenguajes como Rust habiéndose subido al carro, el sistema empieza a dejar ver sus costuras, y se vuelve a hablar sobre qué significa y qué debería significar mover un objeto. Es especialmente provocador el paper p2345<ref id="1" /> de un favorito de esta casa, Sean Parent, que plantea una redefinición del mover especialmente problemática por ser incompatible con la especificación actual y con la forma en la que el concepto se entiendo ahora mismo, pero que resuelve los problemas más acuciantes.</description>
+      <description><p>La definición de mover un objeto en C++ ha sido motivo de polémica desde el principio. En parte es comprensible, este es un campo en el que C++ fue pionero, y la solución que se diseñó fue una que resolvía de forma bastante elegante problemas importantes que el lenguaje arrastraba desde siempre, lo cual es meritorio cuando no hay ninguna referencia en la que basarse y de cuyos errores aprender. Diez años después, y con otros lenguajes como Rust habiéndose subido al carro, el sistema empieza a dejar ver sus costuras, y se vuelve a hablar sobre qué significa y qué debería significar mover un objeto. Es especialmente provocador el paper p2345<sup>[1]</sup> de un favorito de esta casa, Sean Parent, que plantea una redefinición del mover especialmente problemática por ser incompatible con la especificación actual y con la forma en la que el concepto se entiendo ahora mismo, pero que resuelve los problemas más acuciantes.</p></description>
     </item>
     <item>
       <title>Copy-on-write no se compone muy bien</title>
@@ -464,7 +464,7 @@
       <link>https://asielorz.github.io/posts/nos-falta-vocabulario</link>
       <guid>https://asielorz.github.io/posts/nos-falta-vocabulario</guid>
       <pubDate>Mon, 8 Feb 2021 00:00:00 +0000</pubDate>
-      <description><youtube id="_XT73wdYFPA" /></description>
+      <description><iframe src="https://www.youtube.com/embed/_XT73wdYFPA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" style="aspect-ratio: 16 / 9;"></iframe></description>
     </item>
     <item>
       <title>No raw loops, no raw pointers. Estilo y arquitectura</title>

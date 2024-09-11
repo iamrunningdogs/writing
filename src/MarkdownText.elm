@@ -53,12 +53,43 @@ escapeTextForXml text = text
 ----------------------------------------------------------------------------------------------------------------
 -- removeFormatting
 
+superscriptNumber : Char -> Char
+superscriptNumber s = case s of
+    '0' -> '⁰'
+    '1' -> '¹'
+    '2' -> '²'
+    '3' -> '³'
+    '4' -> '⁴'
+    '5' -> '⁵'
+    '6' -> '⁶'
+    '7' -> '⁷'
+    '8' -> '⁸'
+    '9' -> '⁹'
+    c -> c
+
+
 removeFormattingRenderer : Markdown.Renderer.Renderer (String)
 removeFormattingRenderer = 
     { heading = \{ rawText } -> rawText
     , paragraph = String.join ""
     , blockQuote = String.join ""
-    , html = Markdown.Html.oneOf []
+    , html = Markdown.Html.oneOf
+        [ Markdown.Html.tag "youtube"
+            (\_ _ ->
+                ""
+            )
+            |> Markdown.Html.withAttribute "id"
+        , Markdown.Html.tag "ref"
+            (\id _ ->
+                String.map superscriptNumber id
+            )
+            |> Markdown.Html.withAttribute "id"
+        , Markdown.Html.tag "footnote"
+            (\id _ ->
+                "[" ++ id ++ "]"
+            )
+            |> Markdown.Html.withAttribute "id"
+        ]
     , text = \x -> x
     , codeSpan = \x -> x
     , strong = String.join ""
@@ -108,7 +139,23 @@ toHtmlStringRenderer =
     { heading = toHtmlStringHeading
     , paragraph = \children -> "<p>" ++ String.join "" children ++ "</p>"
     , blockQuote = \children -> "<blockquote>" ++ String.join "" children ++ "</blockquote>"
-    , html = Markdown.Html.oneOf []
+    , html = Markdown.Html.oneOf
+        [ Markdown.Html.tag "youtube"
+            (\id _ ->
+                "<iframe src=\"https://www.youtube.com/embed/" ++ id ++ "\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"true\" style=\"aspect-ratio: 16 / 9;\"></iframe>"
+            )
+            |> Markdown.Html.withAttribute "id"
+        , Markdown.Html.tag "ref"
+            (\id _ ->
+                "<sup>[" ++ id ++ "]</sup>"
+            )
+            |> Markdown.Html.withAttribute "id"
+        , Markdown.Html.tag "footnote"
+            (\id _ ->
+                "[" ++ id ++ "]"
+            )
+            |> Markdown.Html.withAttribute "id"
+        ]
     , text = \x -> escapeTextForXml x
     , codeSpan = \text -> "<code>" ++ escapeTextForXml text ++ "</code>"
     , strong = \children -> "<b>" ++ String.join "" children ++ "</b>"
