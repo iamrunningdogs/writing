@@ -7,12 +7,12 @@ import FatalError exposing (FatalError)
 import Head
 import PagesMsg exposing (PagesMsg)
 import Posts
-import PostsMarkdown
 import RouteBuilder exposing (App, StatelessRoute)
 import SeoConfig exposing (defaultSeo)
 import Shared
 import View exposing (View)
 import Widgets
+import MarkdownText exposing (MarkdownText)
 
 
 type alias Model =
@@ -72,8 +72,8 @@ head app =
     in
     SeoConfig.makeHeadTags
         { defaultSeo
-            | title = post.header.title ++ " — Asier Elorz"
-            , description = Posts.description post
+            | title = MarkdownText.removeFormatting post.header.title ++ " — Asier Elorz"
+            , description = post |> Posts.description |> MarkdownText.removeFormatting
             , image =
                 post.header.image
                     |> Maybe.map (\url -> SeoConfig.imageFromUrl url post.header.image_alt)
@@ -85,7 +85,7 @@ view :
     App Data ActionData RouteParams
     -> Shared.Model
     -> View (PagesMsg Msg)
-view app sharedModel =
+view app _ =
     let
         post =
             app.data
@@ -98,7 +98,7 @@ view app sharedModel =
                 Just image_url ->
                     [ Widgets.postBannerImage [] image_url post.header.image_alt ]
     in
-    { title = post.header.title ++ " — Asier Elorz"
+    { title = MarkdownText.removeFormatting post.header.title ++ " — Asier Elorz"
     , body =
         UI.column
             [ UI.spacing 10
@@ -106,10 +106,10 @@ view app sharedModel =
             ]
         <|
             image_widget
-                ++ [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size 25, UI_Font.bold ] [ UI.text post.header.title ] }
+                ++ [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size 25, UI_Font.bold ] [ Widgets.markdownTitle post.header.title ] }
                    , Widgets.dateText "Publicado el " post.header.date
                    , UI.wrappedRow [ UI.spacing 5 ] (List.map Widgets.tag post.header.tags)
                    , UI.el [ UI.height (px 20) ] UI.none -- Dummy element to add spacing between the header and the text
-                   , UI.column [ UI.spacing 15, UI.width UI.fill ] <| PostsMarkdown.parseBody post.body
+                   , UI.column [ UI.spacing 15, UI.width UI.fill ] <| Widgets.markdownBody post.body
                    ]
     }

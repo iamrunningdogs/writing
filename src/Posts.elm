@@ -1,4 +1,4 @@
-module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader, postUrl, removeDateFromPostFilename)
+module Posts exposing (Post, PostHeader, allBlogPosts, description, groupBy, loadPost, loadPostHeader, postUrl, removeDateFromPostFilename, passesFilter)
 
 import BackendTask exposing (BackendTask)
 import BackendTask.File
@@ -8,6 +8,7 @@ import Dict
 import FatalError exposing (FatalError)
 import Json.Decode
 import Parser exposing ((|.), (|=))
+import MarkdownText exposing (MarkdownText(..))
 
 
 allBlogPosts : BackendTask FatalError (List String)
@@ -21,10 +22,10 @@ allBlogPosts =
 
 type alias PostHeader =
     { url : String
-    , title : String
+    , title : MarkdownText
     , tags : List String
     , date : Date
-    , description : Maybe String
+    , description : Maybe MarkdownText
     , image : Maybe String
     , image_alt : Maybe String
     }
@@ -32,20 +33,20 @@ type alias PostHeader =
 
 type alias Post =
     { header : PostHeader
-    , body : String
+    , body : MarkdownText
     }
 
 
 {-| Returns the bespoke description if its available, or the first paragraph if it's not.
 -}
-description : Post -> String
+description : Post -> MarkdownText
 description post =
     case post.header.description of
         Just str ->
             str
 
         Nothing ->
-            post.body |> String.lines |> List.head |> Maybe.withDefault ""
+            post.body |> MarkdownText.source |> String.lines |> List.head |> Maybe.withDefault "" |> MarkdownText
 
 
 loadPost : String -> BackendTask FatalError Post
@@ -64,16 +65,16 @@ loadPostHeader post_filename =
 
 postDecoder : String -> String -> Json.Decode.Decoder Post
 postDecoder url body =
-    postHeaderDecoder url |> Json.Decode.map (\header -> { header = header, body = body })
+    postHeaderDecoder url |> Json.Decode.map (\header -> { header = header, body = MarkdownText body })
 
 
 postHeaderDecoder : String -> Json.Decode.Decoder PostHeader
 postHeaderDecoder url =
     Json.Decode.map6 (PostHeader url)
-        (Json.Decode.field "title" Json.Decode.string)
+        (Json.Decode.map MarkdownText <| Json.Decode.field "title" Json.Decode.string)
         (Json.Decode.field "tags" tagsDecoder)
         (Json.Decode.field "date" DateTime.jsonDecode)
-        (Json.Decode.maybe <| Json.Decode.field "description" Json.Decode.string)
+        (Json.Decode.maybe <| Json.Decode.map MarkdownText <| Json.Decode.field "description" Json.Decode.string)
         (Json.Decode.maybe <| Json.Decode.field "image" Json.Decode.string)
         (Json.Decode.maybe <| Json.Decode.field "image-alt" Json.Decode.string)
 
@@ -133,3 +134,15 @@ groupBy get_keys list =
     list
         |> List.foldl insert Dict.empty
         |> Dict.toList
+
+
+passesFilter : String -> PostHeader -> Bool
+passesFilter filter post =
+    let
+        filter_lowercase =
+            String.toLower filter
+
+        post_title_lowercase =
+            String.toLower <| MarkdownText.removeFormatting post.title
+    in
+    String.isEmpty filter || String.contains filter_lowercase post_title_lowercase || List.any (String.contains filter) post.tags

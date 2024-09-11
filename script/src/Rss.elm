@@ -5,6 +5,7 @@ import BackendTask exposing (BackendTask)
 import BackendTask.Time
 import DateTime exposing (Date)
 import Posts
+import MarkdownText
 
 run : Script
 run =
@@ -41,12 +42,12 @@ make_rss_file body =
 
 post_to_xml : Posts.Post -> String
 post_to_xml post = "    <item>\n"
-    ++ ("      <title>" ++ escape_text_for_xml post.header.title ++ "</title>\n")
+    ++ ("      <title>" ++ MarkdownText.escapeTextForXml (MarkdownText.removeFormatting post.header.title) ++ "</title>\n")
     ++ ("      <link>" ++ absolute_url post.header.url ++ "</link>\n")
     ++ ("      <guid>" ++ absolute_url post.header.url ++ "</guid>\n")
     ++ ("      <pubDate>" ++ DateTime.toStringRss post.header.date ++ "</pubDate>\n")
     ++ image_url_to_xml post.header.image
-    ++ ("      <description>" ++ escape_text_for_xml (Posts.description post) ++ "</description>\n")
+    ++ ("      <description>" ++ MarkdownText.toHtmlString (Posts.description post) ++ "</description>\n")
     ++ "    </item>"
 
 
@@ -58,15 +59,6 @@ image_url_to_xml maybe_url = case maybe_url of
 
 absolute_url : String -> String
 absolute_url relative_url = "https://asielorz.github.io" ++ relative_url
-
-
-escape_text_for_xml : String -> String
-escape_text_for_xml text = text
-    |> String.replace "<" "&lt;"
-    |> String.replace ">" "&gt;"
-    |> String.replace "&" "&amp;"
-    |> String.replace "'" "&apos;"
-    |> String.replace "\"" "&quot;"
 
 
 xml_header : Date -> String

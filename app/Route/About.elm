@@ -5,15 +5,14 @@ import BackendTask.File
 import Element as UI
 import FatalError exposing (FatalError)
 import Head
-import Head.Seo as Seo
 import PagesMsg exposing (PagesMsg)
-import Posts
-import PostsMarkdown
+import MarkdownText exposing (MarkdownText(..))
 import Route
 import RouteBuilder exposing (App, StatelessRoute)
 import SeoConfig exposing (defaultSeo)
 import Shared
 import View exposing (View)
+import Widgets
 
 
 type alias Model =
@@ -29,7 +28,7 @@ type alias RouteParams =
 
 
 type alias Data =
-    { text : String
+    { text : MarkdownText
     }
 
 
@@ -50,6 +49,7 @@ data : BackendTask FatalError Data
 data =
     BackendTask.File.bodyWithoutFrontmatter "about.md"
         |> BackendTask.allowFatal
+        |> BackendTask.map MarkdownText
         |> BackendTask.map Data
 
 
@@ -64,10 +64,10 @@ view :
     App Data ActionData RouteParams
     -> Shared.Model
     -> View (PagesMsg Msg)
-view app shared =
+view app _ =
     { title = "Sobre mí — Asier Elorz"
     , body =
-        UI.column [ UI.spacing 15 ] <| PostsMarkdown.parseBody app.data.text
+        UI.column [ UI.spacing 15 ] <| Widgets.markdownBody app.data.text
 
     --, Route.Blog__Slug_ { slug = "hello" }
     --    |> Route.link [] [ Html.text "My blog post" ]

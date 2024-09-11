@@ -96,14 +96,14 @@ view :
     -> Shared.Model
     -> Model
     -> View (PagesMsg Msg)
-view app shared model =
+view app _ model =
     { title = title
     , body =
         let
             -- Posts grouped by month they were published
             grouped_posts =
                 app.data.posts
-                    |> List.filter (passesFilter model.search_text)
+                    |> List.filter (Posts.passesFilter model.search_text)
                     |> Posts.groupBy (\post -> [ ( post.date.year, DateTime.monthToInt post.date.month ) ])
                     |> List.sortWith (\( a, _ ) ( b, _ ) -> compare b a)
 
@@ -122,15 +122,3 @@ view app shared model =
             [ UI.spacing 40 ]
             (search_box :: List.map view_grouped_posts grouped_posts)
     }
-
-
-passesFilter : String -> Posts.PostHeader -> Bool
-passesFilter filter post =
-    let
-        filter_lowercase =
-            String.toLower filter
-
-        post_title_lowercase =
-            String.toLower post.title
-    in
-    String.isEmpty filter || String.contains filter_lowercase post_title_lowercase || List.any (String.contains filter) post.tags

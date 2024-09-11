@@ -2,18 +2,14 @@ module Route.Index exposing (ActionData, Data, Model, Msg, route)
 
 import BackendTask exposing (BackendTask)
 import DateTime
-import Element as UI exposing (px, rgb, rgba255)
-import Element.Background as UI_Background
+import Element as UI exposing (px, rgb)
 import Element.Border as UI_Border
 import Element.Font as UI_Font
 import FatalError exposing (FatalError)
 import Head
 import Head.Seo as Seo
-import Html.Attributes
-import Markdown.Block exposing (HtmlAttribute)
 import PagesMsg exposing (PagesMsg)
 import Posts
-import PostsMarkdown
 import Route
 import RouteBuilder exposing (App, StatelessRoute)
 import SeoConfig
@@ -72,7 +68,7 @@ view :
     App Data ActionData RouteParams
     -> Shared.Model
     -> View (PagesMsg Msg)
-view app shared =
+view app _ =
     { title = "Asier Elorz"
     , body =
         UI.column
@@ -108,10 +104,10 @@ viewPost post =
         , UI.spacing 10
         ]
         (image_widget
-            ++ [ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ UI.text post.header.title ] }
+            ++ [ Widgets.link [ UI_Font.size 25, UI_Font.bold ] { url = post.header.url, label = UI.paragraph [] [ Widgets.markdownTitle post.header.title ] }
                , UI.wrappedRow [ UI.spacing 5 ] (Widgets.dateText "" post.header.date :: List.map Widgets.tag post.header.tags)
                , UI.el [ UI.height (px 5) ] UI.none -- Dummy element to add spacing between the header and the text
-               , PostsMarkdown.parseBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
+               , Widgets.markdownBody (Posts.description post) |> List.head |> Maybe.withDefault UI.none
                , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator
                , Widgets.horizontalSeparator 1
                , UI.el [ UI.height (px 10) ] UI.none -- Dummy element to add spacing around the separator

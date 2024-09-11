@@ -1,5 +1,5 @@
 ---
-title: Estoy cansado de los Souls
+title: Estoy cansado de los *Souls*
 date: 2024-7-28
 image: /images/shadow-of-the-erdtree.png
 image-alt: Imagen promocional de Shadow of the Erdtree, el DLC de Elden Ring. A la izquierda de la imagen vemos a Miquella montado en un caballo blanco, en medio de un trigal en el que hay lápidas y cruces medio transparentes. Mira hacia el horizonte, donde podemos ver el Scadutree, el árbol negro que dirige la trama del juego y que se puede ver en el horizonte desde la mayor parte del mapa. El cielo está nublado y negro en toda la imagen excepto al rededor del Scadutree, que está bañado por una luz dorada de aspecto sagrado.
