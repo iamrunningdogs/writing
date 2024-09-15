@@ -28,6 +28,7 @@ import Fontawesome
 import Html
 import Html.Attributes
 import Posts
+import SyntaxHighlight
 import Url
 import MarkdownText exposing (MarkdownText)
 import Markdown.Renderer.ElmUi as MarkdownRenderer exposing (Error(..))
@@ -291,20 +292,21 @@ markdownRenderer =
         , unorderedList = unorderedList
         , link = \{ destination } body -> blueLink [] { url = destination, label = UI.paragraph [] body }
         , heading = \{ level, rawText, children } -> complexHeading [ UI.paddingEach { top = 10, left = 0, bottom = 0, right = 0 } ] (Markdown.Block.headingLevelToInt level) rawText children
-        , codeBlock =
-            defaultRenderer.codeBlock
-                >> UI.el
-                    [ UI_Border.width 1
-                    , UI_Border.color Colors.footerBorder
-                    , UI_Background.color Colors.widgetBackground
-                    , UI_Border.rounded 10
-                    , UI.paddingXY 15 0
-                    , UI.width UI.fill
-                    , UI.scrollbarX
-
-                    -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
-                    , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
-                    ]
+--        , codeBlock =
+--            defaultRenderer.codeBlock
+--                >> UI.el
+--                    [ UI_Border.width 1
+--                    , UI_Border.color Colors.footerBorder
+--                    , UI_Background.color Colors.widgetBackground
+--                    , UI_Border.rounded 10
+--                    , UI.paddingXY 15 0
+--                    , UI.width UI.fill
+--                    , UI.scrollbarX
+--
+--                    -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
+--                    , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+--                    ]
+        , codeBlock = codeBlock
         , blockQuote = blockQuote
     }
 
@@ -331,6 +333,33 @@ unorderedList items =
     List.map unorderedListItem items
         |> UI.column [ UI.spacing 5 ]
 
+
+codeBlock : { body : String, language : Maybe String } -> UI.Element msg
+codeBlock { body, language } = 
+    let
+        color_to_string {r, g, b} = "rgb(" ++ String.fromInt r ++ ", " ++ String.fromInt g ++ ", " ++ String.fromInt b ++ ")"
+        render block = Html.span [ Html.Attributes.style "color" (color_to_string block.color) ] [ Html.text block.text ]
+        content = case language of
+            Nothing -> [ Html.text body ]
+            Just identifier ->
+                SyntaxHighlight.syntax_for identifier
+                |> Maybe.map (\syntax -> SyntaxHighlight.highlight syntax body)
+                |> Maybe.map (List.map render)
+                |> Maybe.withDefault [ Html.text body ]
+        code_block = Html.pre [] content |> UI.html
+    in
+        UI.el
+            [ UI_Border.width 1
+            , UI_Border.color Colors.footerBorder
+            , UI_Background.color Colors.widgetBackground
+            , UI_Border.rounded 10
+            , UI.paddingXY 15 0
+            , UI.width UI.fill
+            , UI.scrollbarX
+            -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
+            , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
+            ]
+            code_block
 
 blockQuote : List (UI.Element msg) -> UI.Element msg
 blockQuote paragraphs =

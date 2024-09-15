@@ -10,7 +10,7 @@ Elm tiene un operador, `|>`, que permite escribir de una forma distinta una expr
 
 Una propiedad muy interesante de este operador se puede apreciar en el uso que le da Richard Feldman en la biblioteca [elm-json-decode-pipeline](https://package.elm-lang.org/packages/NoRedInk/elm-json-decode-pipeline/latest/). Esta biblioteca hace un uso bastante creativo del operador pizza para lograr emular un [functor aplicativo](/posts/intuicion-functor-aplicativo). La biblioteca permite escribir una función para leer una estructura a partir de un objeto de json, con un patrón muy similar a llamar a una función de varios parámetros con un functor aplicativo. Veamos el ejemplo que dan en la página.
 
-```Elm
+```elm
 type alias User =
   { id : Int
   , email : Maybe String
@@ -33,13 +33,13 @@ La magia sucede en las funciones `required`, `optional` y `hardcoded`. Lo que es
 
 Tal vez el ejemplo se entienda mejor si lo reescribimos en términos de `custom`, que es otra función que también ofrece la biblioteca. El tipo de `custom` es este:
 
-```Elm
+```elm
 required : Decoder a -> Decoder (a -> b) -> Decoder b
 ```
 
 ¿Suena conocido, verdad? Y la declaración de `userDecoder` del ejemplo anterior escrita únicamente en términos de `custom` quedaría algo así.
 
-```Elm
+```elm
 userDecoder : Decoder User
 userDecoder =
   Decode.succeed User
@@ -55,7 +55,7 @@ Hasta ahora hemos aprendido que podemos emular el patrón de diseño del functor
 
 Lo interesante de este patrón es que, a diferencia de con el functor aplicativo convencional, muy rara vez se usa `|> custom`. El patrón más común con un functor aplicativo en Haskell es crear expresiones donde se llama a una función con varios parámetros, concatenando las llamadas con `<*>`. Esto crea una mayor rigidez, ya que estamos limitados a una sola definición de `<*>` por tipo de functor. Aquí sin embargo la composición está definida en una función normal, y eso significa que si quisiéramos alterar la forma en la que sucede esa composición, tan sólo hace falta escribir una nueva función. También es posible escribir funciones que internamente llamen a `custom` pero le den una interfaz más fácil de usar y más legible. El primer ejemplo, con las llamadas a `required`, `optional` y `hardcoded`, es mucho más legible que el segundo, con las cuatro llamadas a `custom`. Esas tres funciones son muy simples. Aquí está la implementación.
 
-```Elm
+```elm
 required : String -> Decoder a -> Decoder (a -> b) -> Decoder b
 required name decoder = custom (Decode.field name decoder)
 
