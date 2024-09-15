@@ -50,7 +50,6 @@ highlight syntax text =
         then []
         else text
             |> Parser.run (make_parser syntax)
-            |> Result.mapError (Debug.log "Error")
             |> Result.withDefault [ { text = text, color = syntax.default_color } ]
 
 
