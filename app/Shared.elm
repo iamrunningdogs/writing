@@ -139,7 +139,7 @@ view sharedData page model toMsg pageView =
         [ UI.layout
             [ UI_Background.color Colors.background
             , UI_Font.color Colors.text
-            , UI_Font.size 18
+            , UI_Font.size 20
             , UI_Font.family [ UI_Font.typeface "Times New Roman", UI_Font.serif ]
             ]
           <|

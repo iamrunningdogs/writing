@@ -30,7 +30,7 @@ tagHoveredBackground =
 
 tagText : UI.Color
 tagText =
-    rgb255 51 125 255
+    rgb255 153 189 255
 
 
 tagHoveredText : UI.Color

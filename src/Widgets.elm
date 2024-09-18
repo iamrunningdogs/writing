@@ -56,11 +56,13 @@ tag tag_name =
         { url = "/tags#" ++ Url.percentEncode tag_name
         , label =
             UI.row
-                [ UI.paddingXY 7 2
+                [ UI.paddingXY 7 3
                 , UI_Background.color Colors.tagBackground
                 , UI_Font.color Colors.tagText
-                , UI_Font.size 14
+                , UI_Font.size 16
                 , UI_Border.rounded 5
+                , UI_Border.width 1
+                , UI_Border.color Colors.tagText
                 , UI.spacing 3
                 , UI.mouseOver [ UI_Background.color Colors.tagHoveredBackground, UI_Font.color Colors.tagHoveredText ]
                 ]
@@ -292,20 +294,6 @@ markdownRenderer =
         , unorderedList = unorderedList
         , link = \{ destination } body -> blueLink [] { url = destination, label = UI.paragraph [] body }
         , heading = \{ level, rawText, children } -> complexHeading [ UI.paddingEach { top = 10, left = 0, bottom = 0, right = 0 } ] (Markdown.Block.headingLevelToInt level) rawText children
---        , codeBlock =
---            defaultRenderer.codeBlock
---                >> UI.el
---                    [ UI_Border.width 1
---                    , UI_Border.color Colors.footerBorder
---                    , UI_Background.color Colors.widgetBackground
---                    , UI_Border.rounded 10
---                    , UI.paddingXY 15 0
---                    , UI.width UI.fill
---                    , UI.scrollbarX
---
---                    -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
---                    , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
---                    ]
         , codeBlock = codeBlock
         , blockQuote = blockQuote
     }
