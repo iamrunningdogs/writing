@@ -92,7 +92,7 @@ Y de repente hemos perdido gran parte de nuestra legibilidad. La función proced
     auto data = co_await request_from_database();
     auto transformed_data = program_logic(data);
     auto database_response = co_await send_to_database(transformed_data);
-    return database_response.is_ok();
+    co_return database_response.is_ok();
 }
 ```
 
@@ -124,7 +124,7 @@ optional<Level> load_level(string path)
 {
     string file_content = co_await load_all_file(path);
     json::value level_json = co_await json::parse(file_content);
-    return build_level(level_json);
+    co_return build_level(level_json);
 }
 ```
 

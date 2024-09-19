@@ -9,7 +9,9 @@ Contaba Kevlin Henney en una charla que revisando código de otra persona se enc
 
 Una reflexión similar me surge al hilo del `operator ?` de los tipos opcionales de rust y el operator ?. de los pointers de Switft, que vienen a ser azúcar sintáctico para decir si el objeto es válido haz esto, si no lo es no hagas nada. Y las demostraciones siempre contienen largas cadenas de accesos donde cada uno puede fallar y escribirlo en términos de if-else como se ha hecho toda la vida sería muy tedioso.
 
-`level?.terrain?.decals?.add_decal(position, texture);`
+```swift
+level?.terrain?.decals?.add_decal(position, texture);
+```
 
 ```cpp
 if (level)

@@ -12,7 +12,7 @@ El functor aplicativo fue introducido, hasta donde tengo conocimiento, en un pap
 
 Antes de comenzar con el functor aplicativo, repasemos el functor. Un functor es una estructura algebraica con una sola operación, llamada comúnmente `map` o `fmap`, y con la forma, dado un functor f:
 
-```Haskell
+```haskell
 fmap :: (a -> b) -> f a -> f b
 ```
 
@@ -22,7 +22,7 @@ Fmap tiene sin embargo una limitación importante. Sólo funciona con funciones 
 
 Para lograr eso, sobre la operación del functor, el functor aplicativo añade dos operaciones:
 
-```Haskell
+```haskell
 pure : a -> f a
 (<*>) : f (a -> b) -> f a -> f b
 ```
@@ -31,7 +31,7 @@ pure : a -> f a
 
 La segunda tiene más enjundia. Se parece mucho a fmap, pero hay una diferencia esencial. En lugar de coger una función como primer parámetro, la función viene también dentro de un functor. Como curiosidad, podemos definir fmap trivialmente en términos de estas dos funciones, demostrando así que todo functor aplicativo es también, por definición, un functor.
 
-```Haskell
+```haskell
 fmap t a = pure t <*> a
 ```
 
@@ -41,7 +41,7 @@ El otro elemento clave a tener en cuenta es el curry de las funciones. En Haskel
 
 Intentemos entender qué sucede en la siguiente expresión:
 
-```Haskell
+```haskell
 pure t <*> fa <*> fb
 ```
 

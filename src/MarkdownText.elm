@@ -126,7 +126,7 @@ removeFormattingUnorderedListItem (Markdown.Block.ListItem task children) =
                     "[x] "
 
                 Markdown.Block.NoTask ->
-                    "• "
+                    "- "
     in
         bullet ++ String.join "" children
 

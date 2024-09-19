@@ -12,7 +12,8 @@ import SeoConfig exposing (defaultSeo)
 import Shared
 import View exposing (View)
 import Widgets
-import MarkdownText exposing (MarkdownText)
+import MarkdownText
+import Style
 
 
 type alias Model =
@@ -106,10 +107,10 @@ view app _ =
             ]
         <|
             image_widget
-                ++ [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size 25, UI_Font.bold ] [ Widgets.markdownTitle post.header.title ] }
+                ++ [ Widgets.link [] { url = "", label = UI.paragraph [ UI_Font.size Style.titleFontSize, UI_Font.bold ] [ Widgets.markdownTitle post.header.title ] }
                    , Widgets.dateText "Publicado el " post.header.date
                    , UI.wrappedRow [ UI.spacing 5 ] (List.map Widgets.tag post.header.tags)
                    , UI.el [ UI.height (px 20) ] UI.none -- Dummy element to add spacing between the header and the text
-                   , UI.column [ UI.spacing 15, UI.width UI.fill ] <| Widgets.markdownBody post.body
+                   , UI.column [ UI.spacing Style.spacingBeetweenParagraphs, UI.width UI.fill ] <| Widgets.markdownBody post.body
                    ]
     }

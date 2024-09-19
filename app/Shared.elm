@@ -24,6 +24,7 @@ import Task
 import UrlPath exposing (UrlPath)
 import View exposing (View)
 import Widgets
+import Style
 
 
 template : SharedTemplate Msg Model Data msg
@@ -71,7 +72,7 @@ init :
             , pageUrl : Maybe PageUrl
             }
     -> ( Model, Effect Msg )
-init flags maybePagePath =
+init _ _ =
     ( { window = Nothing }
     , Browser.Dom.getViewport
         |> Task.map (\viewport -> { width = floor viewport.viewport.width, height = floor viewport.viewport.height })
@@ -95,7 +96,7 @@ random_uniform l =
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        SharedMsg globalMsg ->
+        SharedMsg _ ->
             ( model, Effect.none )
 
         Msg_ViewportSize new_window ->
@@ -134,13 +135,13 @@ view :
     -> (Msg -> msg)
     -> View msg
     -> { body : List (Html msg), title : String }
-view sharedData page model toMsg pageView =
+view sharedData _ model toMsg pageView =
     { body =
         [ UI.layout
             [ UI_Background.color Colors.background
             , UI_Font.color Colors.text
-            , UI_Font.size 20
-            , UI_Font.family [ UI_Font.typeface "Times New Roman", UI_Font.serif ]
+            , UI_Font.size Style.regularFontSize
+            , UI_Font.family Style.regularFont
             ]
           <|
             UI.column

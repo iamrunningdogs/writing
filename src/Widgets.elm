@@ -38,6 +38,7 @@ import Markdown.Block
 import Markdown.Html
 import Parser
 import Parser.Advanced
+import Style
 
 
 link : List (UI.Attribute msg) -> { url : String, label : UI.Element msg } -> UI.Element msg
@@ -295,6 +296,7 @@ markdownRenderer =
         , link = \{ destination } body -> blueLink [] { url = destination, label = UI.paragraph [] body }
         , heading = \{ level, rawText, children } -> complexHeading [ UI.paddingEach { top = 10, left = 0, bottom = 0, right = 0 } ] (Markdown.Block.headingLevelToInt level) rawText children
         , codeBlock = codeBlock
+        , codeSpan = codeSpan
         , blockQuote = blockQuote
     }
 
@@ -322,32 +324,52 @@ unorderedList items =
         |> UI.column [ UI.spacing 5 ]
 
 
+codeSpan : String -> UI.Element msg
+codeSpan raw_text = UI.el 
+    [ UI_Font.family [ UI_Font.monospace ]
+    , UI_Font.size Style.inlineMonospaceFontSize
+    , UI_Background.color Colors.widgetBackground
+    ] 
+    <| UI.text raw_text
+
+
 codeBlock : { body : String, language : Maybe String } -> UI.Element msg
 codeBlock { body, language } = 
     let
+        maybe_syntax = Maybe.andThen SyntaxHighlight.syntax_for language
         color_to_string {r, g, b} = "rgb(" ++ String.fromInt r ++ ", " ++ String.fromInt g ++ ", " ++ String.fromInt b ++ ")"
         render block = Html.span [ Html.Attributes.style "color" (color_to_string block.color) ] [ Html.text block.text ]
-        content = case language of
-            Nothing -> [ Html.text body ]
-            Just identifier ->
-                SyntaxHighlight.syntax_for identifier
-                |> Maybe.map (\syntax -> SyntaxHighlight.highlight syntax body)
-                |> Maybe.map (List.map render)
-                |> Maybe.withDefault [ Html.text body ]
-        code_block = Html.pre [] content |> UI.html
+        block_content = maybe_syntax
+            |> Maybe.map (\syntax -> SyntaxHighlight.highlight syntax body)
+            |> Maybe.map (List.map render)
+            |> Maybe.withDefault [ Html.text body ]
+        code_block = Html.pre [] block_content |> UI.html
+        title language_name = UI.el 
+            [ UI_Font.size Style.regularFontSize
+            , UI.paddingXY 0 5
+            ] 
+            <| UI.text language_name
+        content = case maybe_syntax of
+            Nothing -> [ code_block ]
+            Just syntax ->
+                [ title syntax.name
+                , horizontalSeparator 1
+                , code_block
+                ]
     in
-        UI.el
+        UI.column
             [ UI_Border.width 1
             , UI_Border.color Colors.footerBorder
             , UI_Background.color Colors.widgetBackground
             , UI_Border.rounded 10
             , UI.paddingXY 15 0
             , UI.width UI.fill
+            , UI_Font.size Style.blockMonospaceFontSize
             , UI.scrollbarX
             -- This is a hack to make UI.scrollbarX work. Otherwise the browser will make the div have a height of 1 px for some reason.
             , UI.htmlAttribute <| Html.Attributes.style "flex-basis" "auto"
             ]
-            code_block
+            content
 
 blockQuote : List (UI.Element msg) -> UI.Element msg
 blockQuote paragraphs =
