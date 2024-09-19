@@ -1,10 +1,10 @@
-Copyright (c) 2023 Asier Elorz Hernáez
+Copyright (c) 2024 student follow MIT
 
 The contents of this website, which consists of the files in
  * /posts
  * /public/images
 
-are copyrighted and sole property of its author Asier Elorz Hernáez. It may 
+are copyrighted and sole property of its author student follow MIT. It may 
 not be used, modified, syndicated or distributed without expressed permission
 from the author.
 
