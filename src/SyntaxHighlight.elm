@@ -1,4 +1,4 @@
-module SyntaxHighlight exposing (Syntax, ColoredText, Color, rgb, highlight, syntax_for, supported_syntaxes, syntax_cpp)
+module SyntaxHighlight exposing (Syntax, ColoredText, Color, rgb, highlight, syntax_for, supported_syntaxes, syntax_cpp, syntax_elm)
 
 import Parser exposing (Parser)
 import Parser exposing ((|.), (|=))
@@ -179,7 +179,7 @@ syntax_cpp =
         , { start = "U'", end = "'", escapes = ["\\'"] }
         ], color = rgb 214 156 117 }
     , number_literal_color = rgb 175 206 139
-    , punctuation = ["!", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "`", "{", "}", "~"]
+    , punctuation = ["!", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "`", "{", "|", "}", "~"]
     , punctuation_color = rgb 152 175 180
     , other_colors = 
         [ { syntax = [ { start = "#", end = "\n", escapes = [] } ], color = rgb 155 155 155 } -- Preprocessor directives
@@ -206,7 +206,7 @@ syntax_elm =
         , { start = "'", end = "'", escapes = ["\\'"] }
         ], color = rgb 214 156 117 }
     , number_literal_color = rgb 175 206 139
-    , punctuation = ["!", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "`", "{", "}", "~"]
+    , punctuation = ["!", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "`", "{", "|", "}", "~"]
     , punctuation_color = rgb 152 175 180
     , other_colors = []
     }

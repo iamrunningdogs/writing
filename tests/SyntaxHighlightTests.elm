@@ -3,7 +3,6 @@ module SyntaxHighlightTests exposing (..)
 import SyntaxHighlight
 import Expect
 import Test exposing (..)
-import Element as UI
 
 -- syntax_cpp
 
@@ -294,3 +293,11 @@ int main(void)
             , { text = ";\r\n}\r\n", color = SyntaxHighlight.syntax_cpp.punctuation_color }
             ]
         )
+
+syntax_elm__vertical_bar : Test
+syntax_elm__vertical_bar = test
+    "Vertical bar is parsed as punctuation"
+    (\_ -> Expect.equal
+            (SyntaxHighlight.highlight SyntaxHighlight.syntax_elm "|")
+            [ { text = "|", color = SyntaxHighlight.syntax_elm.punctuation_color } ]
+    )
