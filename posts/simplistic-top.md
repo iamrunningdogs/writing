@@ -1,8 +1,7 @@
 # simplistic-top
 
 ---
-
-title: 罡气
+title: '罡气'
 
 date: 2024-09-25
 
