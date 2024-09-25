@@ -2,7 +2,7 @@
 title: '新期刊课本'
 date: 2024-09-25
 tags:
-  serum ferroptosis
+  ferroptosis
 ---
 CKD 通常伴有贫血，这主要由于 ESRD 肾血流
 量减少、肾小管间质破坏，促红细胞生成素(erythro鄄
